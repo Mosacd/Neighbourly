@@ -1,0 +1,101 @@
+[
+  {
+    "id": "1",
+    "title": "Beach Cleanup Day",
+    "description": "Help remove trash and debris from local beaches to protect marine life. Gloves and bags provided.",
+    "startdate": "2024-07-20T09:00:00",
+    "enddate": "2024-07-20T12:00:00",
+    "schedule": "Saturday, 9 AM - 12 PM",
+    "location": "Sunset Beach Park",
+    "tags": "environment, outdoors",
+    "organization": "Ocean Guardians"
+  },
+  {
+    "id": "2",
+    "title": "Food Bank Sorting",
+    "description": "Sort and pack donated food items for distribution to families in need.",
+    "startdate": "2024-07-22T13:00:00",
+    "schedule": "Every Monday, 1 PM - 4 PM",
+    "location": "Community Food Bank, 123 Main St",
+    "tags": "hunger relief, community"
+  },
+  {
+    "id": "3",
+    "title": "Animal Shelter Help",
+    "description": "Assist with feeding, cleaning, and socializing rescued dogs and cats.",
+    "startdate": "2024-07-25T10:00:00",
+    "enddate": "2024-07-25T14:00:00",
+    "schedule": "Thursday, 10 AM - 2 PM",
+    "location": "Paws & Claws Shelter",
+    "tags": "animals, caregiving",
+    "organization": "Paws & Claws"
+  },
+  {
+    "id": "4",
+    "title": "Tutoring Kids",
+    "description": "Provide one-on-one tutoring in math and reading for elementary students.",
+    "startdate": "2024-08-01T15:00:00",
+    "schedule": "Weekdays after school",
+    "location": "Sunrise Elementary School",
+    "tags": "education, youth"
+  },
+  {
+    "id": "5",
+    "title": "Park Tree Planting",
+    "description": "Plant native trees to restore urban green spaces. No experience needed!",
+    "startdate": "2024-08-05T08:00:00",
+    "enddate": "2024-08-05T11:00:00",
+    "schedule": "Monday, 8 AM - 11 AM",
+    "location": "Riverside Park",
+    "tags": "environment, outdoors"
+  },
+  {
+    "id": "6",
+    "title": "Senior Center Bingo Night",
+    "description": "Host a fun bingo night for seniors at the local community center.",
+    "startdate": "2024-08-10T18:00:00",
+    "schedule": "Monthly on the 2nd Friday",
+    "location": "Golden Years Senior Center",
+    "tags": "elderly, recreation"
+  },
+  {
+    "id": "7",
+    "title": "Disaster Relief Training",
+    "description": "Learn basic disaster response skills and join our volunteer network.",
+    "startdate": "2024-08-15T09:00:00",
+    "enddate": "2024-08-15T16:00:00",
+    "schedule": "One-day workshop",
+    "location": "Red Cross Chapter, 456 Oak Ave",
+    "tags": "emergency, training",
+    "organization": "Red Cross"
+  },
+  {
+    "id": "8",
+    "title": "Library Storytime Volunteer",
+    "description": "Read books and lead activities for preschoolers during weekly storytime.",
+    "startdate": "2024-08-20T10:30:00",
+    "schedule": "Tuesdays, 10:30 AM - 11:30 AM",
+    "location": "Downtown Public Library",
+    "tags": "education, youth"
+  },
+  {
+    "id": "9",
+    "title": "Homeless Shelter Dinner Service",
+    "description": "Prepare and serve meals to homeless individuals at the shelter.",
+    "startdate": "2024-08-25T17:00:00",
+    "enddate": "2024-08-25T20:00:00",
+    "schedule": "Last Sunday of each month",
+    "location": "Hope Haven Shelter",
+    "tags": "hunger relief, community"
+  },
+  {
+    "id": "10",
+    "title": "Tech Workshop for Seniors",
+    "description": "Teach seniors how to use smartphones, email, and social media.",
+    "startdate": "2024-09-05T13:00:00",
+    "schedule": "Monthly, 1 PM - 3 PM",
+    "location": "Community Tech Hub",
+    "tags": "education, elderly",
+    "organization": "Tech4Good"
+  }
+]
