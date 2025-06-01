@@ -1,10 +1,8 @@
 import logo from "@/assets/Neighbourly logo.svg"
-import {
-  Facebook,
-  Twitter,
-  Instagram, 
-  Music,
-} from "lucide-react";
+import fb from "@/assets/mediaLinks/basil_facebook-outline.svg"
+import tw from "@/assets/mediaLinks/prime_twitter.svg"
+import tt from "@/assets/mediaLinks/meteor-icons_tiktok.svg"
+import inst from "@/assets/mediaLinks/mdi_instagram.svg"
 
 const Footer = () => {
 
@@ -26,12 +24,12 @@ const Footer = () => {
         <a href="#">Q&amp;A</a>
       </div>
 
-      <div className="flex items-center gap-2 pt-4">
+      <div className="flex items-center gap-4 pt-4">
         <span>Follow Us:</span>
-        <Facebook className="w-5 h-5" />
-        <Twitter className="w-5 h-5" />
-        <Music className="w-5 h-5" />
-        <Instagram className="w-5 h-5" />
+        <a href="#"><img src={fb} alt="" /></a>
+         <a href="#"><img src={tw} alt="" /></a>
+        <a href="#"><img src={tt} alt="" /></a>
+        <a href="#"><img src={inst} alt="" /></a>
       </div>
     </div>
         </div>
