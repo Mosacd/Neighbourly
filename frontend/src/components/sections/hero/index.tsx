@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 const Hero = () => {
 
     return(
-        <div className="flex justify-between items-center w-full max-w-[1552px] mt-[120px] mb-[120px] m-auto">
+        <div className="flex justify-between items-center w-full max-w-[1552px] mt-[120px] m-auto">
             <img src={hero} alt="heroImage" />
             <div className="w-full max-w-[590px]">
                 <h1 className="noto-sans-semibold text-[40px]">Become a Volunteer With <span className="piedra-regular text-main tracking-[2px] text-[64px]">Us</span></h1>
