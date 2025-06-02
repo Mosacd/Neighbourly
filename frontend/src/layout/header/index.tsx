@@ -1,7 +1,7 @@
 import logo from "@/assets/Neighbourly logo.svg"
 import globe from "@/assets/globe.svg"
 import { Button } from "@/components/ui/button";
-import ToggleSwitch from "@/components/ui/customToggle";
+import ToggleSwitch from "@/components/ui/custom-elements/customToggle";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const Header = () => {
