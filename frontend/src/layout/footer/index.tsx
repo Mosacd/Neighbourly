@@ -7,7 +7,7 @@ import inst from "@/assets/mediaLinks/mdi_instagram.svg"
 const Footer = () => {
 
     return(
-        <div className="h-[465px] px-[120px] py-[119px] mt-20 shadow-top">
+        <div className="h-[465px] px-[120px] py-[119px] mt-[120px] shadow-top">
                 <div className="flex justify-between items-center w-full h-full">
  <div className="flex gap-[24px] items-center">
           <img src={logo} alt="" />
