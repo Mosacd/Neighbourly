@@ -12,7 +12,7 @@ import CardForHome from "./cards";
 const CaruselHome = () => {
 
     return(
-<Carousel className="w-full max-w-[1363px]">
+<Carousel className="w-full  max-w-[1536px]">
   <CarouselContent>
     <CarouselItem><CardForHome/></CarouselItem>
     <CarouselItem><CardForHome/></CarouselItem>
