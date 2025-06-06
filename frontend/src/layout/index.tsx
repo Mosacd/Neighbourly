@@ -1,12 +1,12 @@
-import Home from "@/pages/home-page";
 import Footer from "./footer";
 import Header from "./header";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
 return(
     <div className="min-h-screen">
     <Header />
-    <Home/>
+    <Outlet />
     <Footer />
    </div>
 )

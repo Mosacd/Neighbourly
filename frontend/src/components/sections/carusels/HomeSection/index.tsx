@@ -1,4 +1,4 @@
-import CaruselHome from "@/components/ui/custom-elements/customCarusel";
+import CaruselHome from "@/components/ui/custom-elements/carusels/customCarusel1";
 
 
 const CaruselSection = () => {
@@ -8,7 +8,10 @@ return(    <div className="h-[720px] w-full bg-[#FFF5D7]">
                             <h1 className="noto-sans-semibold text-[48px] mb-[48px]">
                             Upcoming Events
                             </h1>
+                                        <div className="w-full flex justify-center px-[70px]">
+
                             <CaruselHome/>
+                            </div>
                 </div>
     </div>
 )
