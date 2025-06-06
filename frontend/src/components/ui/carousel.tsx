@@ -192,7 +192,7 @@ function CarouselPrevious({
       variant={variant}
       size={size}
       className={cn(
-        "absolute scale-120 w-[40px] h-[40px] bg-transparent hover:bg-transparent border-black border-[2px] rounded-full disabled:bg-white",
+        "absolute scale-120 w-[40px] h-[40px] bg-transparent hover:bg-transparent border-black border-[2px] rounded-full ",
         orientation === "horizontal"
           ? "-bottom-1/5 left-1/2 -translate-x-[calc(100%+40px)] -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -222,7 +222,7 @@ function CarouselPrevious2({
       variant={variant}
       size={size}
       className={cn(
-        "absolute scale-120 w-[40px] h-[40px] bg-transparent hover:bg-transparent border-black border-[2px] rounded-full disabled:bg-white",
+        "absolute scale-120 w-[40px] h-[40px] bg-transparent hover:bg-transparent border-black border-[2px] rounded-full",
         orientation === "horizontal"
           ? "top-1/2 -left-12 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -252,7 +252,7 @@ function CarouselNext({
       variant={variant}
       size={size}
       className={cn(
-        "absolute scale-120 w-[40px] h-[40px] bg-transparent hover:bg-transparent border-black rounded-full border-[2px] disabled:bg-white",
+        "absolute scale-120 w-[40px] h-[40px] bg-transparent hover:bg-transparent border-black rounded-full border-[2px]",
         orientation === "horizontal"
           ? "-bottom-1/5 left-1/2 translate-x-[40px] -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -282,7 +282,7 @@ function CarouselNext2({
       variant={variant}
       size={size}
       className={cn(
-        "absolute scale-120  w-[40px] h-[40px] bg-transparent hover:bg-transparent border-black rounded-full border-[2px] disabled:bg-white",
+        "absolute scale-120  w-[40px] h-[40px] bg-transparent hover:bg-transparent border-black rounded-full border-[2px]",
         orientation === "horizontal"
           ? "top-1/2 -right-12 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",

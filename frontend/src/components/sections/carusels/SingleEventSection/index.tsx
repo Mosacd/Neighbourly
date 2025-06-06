@@ -9,7 +9,7 @@ return(
                             Similar Events
                             </h1>
                             
-            <div className="w-full flex justify-center px-[70px]">
+            <div className="w-full flex justify-center px-[40px]">
                             <CaruselEvent/>
                              </div>
                 </div>
