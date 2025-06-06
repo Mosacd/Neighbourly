@@ -32,13 +32,8 @@ const SingleEvent = () => {
     scrollbarWidth: "thin",            // Firefox
     scrollbarColor: "#FFA412 white",    // Firefox (thumb color, track color)
   
-  }} className="noto-sans-regular text-[24px] max-h-[385px] overflow-y-auto p-2 border-[black] border-t-2 border-b-2">
+  }} className="noto-sans-regular text-[24px] max-h-[385px] overflow-y-auto">
                    {eventData[convertedId-1]?.description}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut culpa beatae sit enim necessitatibus commodi debitis consequatur, tenetur eos perspiciatis, totam adipisci et cum aliquid nam architecto saepe velit iusto!
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut culpa beatae sit enim necessitatibus commodi debitis consequatur, tenetur eos perspiciatis, totam adipisci et cum aliquid nam architecto saepe velit iusto!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut culpa beatae sit enim necessitatibus commodi debitis consequatur, tenetur eos perspiciatis, totam adipisci et cum aliquid nam architecto saepe velit iusto!
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut culpa beatae sit enim necessitatibus commodi debitis consequatur, tenetur eos perspiciatis, totam adipisci et cum aliquid nam architecto saepe velit iusto!
-
                 </p>
                 </div>
                 <div className="flex gap-10">
