@@ -1,19 +1,20 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Layout from './layout'
-import Home from './pages/home-page'
+import Home from './pages/homePage'
+import SingleEvent from './pages/singleEvent'
 
 function App() {
- 
-
   return (
     <Routes>
-      <Route index element={<Navigate to="/home" />} />
-      <Route path='/' element={<Layout/>}>
-        <Route path='/home' element={<Home/>} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Navigate to="/home" />} />
+        <Route path="Home" element={<Home />} />
+        <Route path="Events" element={<SingleEvent />} />
+        <Route path="Events/:id" element={<SingleEvent />} />
+        <Route path="*" element={<Navigate to="/home" replace />} />
       </Route>
     </Routes>
-    
   )
 }
 

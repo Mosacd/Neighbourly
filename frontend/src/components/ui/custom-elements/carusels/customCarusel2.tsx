@@ -1,13 +1,17 @@
+
 import {
   Carousel,
   CarouselContent,
   CarouselIndicator,
   CarouselItem,
   CarouselNext,
+  CarouselNext2,
   CarouselPrevious,
+  CarouselPrevious2,
 } from "@/components/ui/carousel"
-import CardForHome from "./cards";
+import CardForHome from "../cards/cardVariant1";
 import image from "@/assets/carusel img.png"
+import CardForSingleEvent from "../cards/cardVariant2";
 const homeCardsData = [
   {
     image: image,
@@ -27,19 +31,17 @@ const homeCardsData = [
 ];
 
 
-const CaruselHome = () => {
-
+const CaruselEvent = () => {
     return(
-<Carousel className="w-full  max-w-[1536px]">
+<Carousel className="w-full  max-w-[1443px] px-[10px]">
   <CarouselContent>
-    {homeCardsData.map((data) => <CarouselItem><CardForHome data={data}/></CarouselItem> )}
+    {homeCardsData.map((data) => <CarouselItem><CardForSingleEvent data={data}/></CarouselItem> )}
   </CarouselContent>
-  <CarouselPrevious />
-  <CarouselNext />
-  <CarouselIndicator />
+  <CarouselPrevious2/>
+  <CarouselNext2/>
 </Carousel>
     )
 }
 
 
-export default CaruselHome;
+export default CaruselEvent;
