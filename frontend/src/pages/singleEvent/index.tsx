@@ -1,4 +1,4 @@
-import cat from "@/assets/cat pic.png"
+// import cat from "@/assets/cat pic.png"
 import CaruselSection from "@/components/sections/carusels/SingleEventSection";
 import { Button } from "@/components/ui/button";
 import { useLocation, useParams } from "react-router-dom";

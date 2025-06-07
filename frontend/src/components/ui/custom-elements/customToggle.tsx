@@ -1,13 +1,14 @@
-import { useState } from "react";
 import darkModeSVG from "@/assets/darkMode.svg"
+import { useTheme } from "@/components/themeProvider";
 
 const ToggleSwitch = () => {
-    const [isOn, setisOn] = useState(false);
+    const {theme, setTheme } = useTheme()
 
-    const handleToggle = () => {
+      const isOn = theme === "dark";
 
-        setisOn(prev => !prev)
-    }
+  const handleToggle = () => {
+    setTheme(isOn ? "light" : "dark");
+  };
 
   return (
     <button

@@ -43,6 +43,7 @@ html,body{
   --shadow-bottom: 0 10px 20px -5px rgba(0, 0, 0, 0.07);
   --color-main: #FFA412;
   --color-main-hover: #FFA412;
+  --color-dark-back: rgb(45, 45, 45);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -116,7 +117,7 @@ html,body{
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: rgb(45, 45, 45);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
