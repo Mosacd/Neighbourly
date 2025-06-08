@@ -11,7 +11,7 @@ return(
               <div className="flex justify-between items-center">
                 <div className="w-full max-w-[852px] h-[253px]">
                     <h1 className="noto-sans-semibold text-[40px] mb-[48px]">{data.title}</h1>
-                    <p className="noto-sans-regular text-[24px] text-[#828282] mb-[32px]">{data.description}</p>
+                    <p className="noto-sans-regular text-[24px] text-[#545454] mb-[32px]">{data.description}</p>
                    <Link to={`/Events/${data.id}`}><Button variant={"secondary"}>See More</Button></Link> 
                 </div>
                 <img className="w-full max-w-[400px] h-[361px] rounded-[24px]" src={data.image} alt="" />

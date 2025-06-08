@@ -139,7 +139,7 @@ const Events = () => {
       <h2 className="mb-[40px] noto-sans-semibold text-[24px]">Location</h2>
      
         {locations.map(({label, value}, i)=> {
-          return(<div key={value} className="flex items-center gap-[16px]">
+          return(<div key={value} className="flex items-center hover:cursor-pointer *:hover:cursor-pointer gap-[16px]">
               <Checkbox checked={selectedLocations.includes(value)}
                 onCheckedChange={() => toggleItem(value, selectedLocations, setSelectedLocations)}
                 id={`location-${i}`}
