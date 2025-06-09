@@ -5,7 +5,7 @@ import Hero from "@/components/sections/hero";
 const Home = () => {
 return  (
     <div className="flex flex-col gap-[120px]">
-        <div className="px-[30px]">
+        <div className="px-[16px] sm:px-[30px]">
     <Hero/>
     </div>
     <CaruselSection/>
