@@ -7,15 +7,15 @@ import inst from "@/assets/mediaLinks/mdi_instagram.svg"
 const Footer = () => {
 
     return(
-        <div className="h-[465px] px-[120px] py-[119px] mt-[120px] shadow-top">
-                <div className="flex justify-between items-center w-full h-full">
+        <div className="h-[400px] 2xl:h-[465px] py-[95px] px-[40px] xl:px-[80px] 2xl:px-[120px] 2xl:py-[119px] mt-[120px] shadow-top">
+                <div className="flex justify-between items-center w-full h-full m-auto max-w-[1200px] 2xl:max-w-[1475px]">
  <div className="flex gap-[24px] items-center">
-          <img src={logo} alt="" />
-        <h1 className="piedra-regular text-[64px] text-main">
+          <img className="w-full max-w-[80px] 2xl:max-w-[96px]" src={logo} alt="" />
+        <h1 className="piedra-regular text-[3.25rem] 2xl:text-[4rem] text-main">
             Neighbourly
         </h1>
         </div>
-        <div className="px-6 py-10 text-[24px] font-[500] text-black">
+        <div className="px-6 py-10 text-lg 2xl:text-xl font-[500] text-black">
       <div className="grid grid-cols-2 gap-x-12 gap-y-2">
         <a href="#">About Us</a>
         <a href="#">Privacy Policy</a>

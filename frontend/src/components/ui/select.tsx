@@ -1,8 +1,9 @@
 import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
-
+import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+import downArrow from "@/assets/downArrow.svg"
 import { cn } from "@/lib/utils"
+
 
 function Select({
   ...props
@@ -35,7 +36,7 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "data-[placeholder]:text-muted-foreground cursor-pointer [&_svg:not([class*='text-'])]:text-muted-foreground flex w-fit items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 whitespace-nowrap transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "data-[placeholder]:text-muted-foreground cursor-pointer [&_svg:not([class*='text-'])]:text-muted-foreground flex w-fit items-center justify-center gap-2 rounded-md border bg-transparent px-3 py-2 whitespace-nowrap transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -43,6 +44,33 @@ function SelectTrigger({
       {children}
       <SelectPrimitive.Icon asChild>
         {/* <ChevronDownIcon className="size-4 opacity-50" /> */}
+      </SelectPrimitive.Icon>
+    </SelectPrimitive.Trigger>
+  )
+}
+
+
+function SelectTriggerForSort({
+  className,
+  size = "default",
+  children,
+  ...props
+}: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
+  size?: "sm" | "default"
+}) {
+  return (
+    <SelectPrimitive.Trigger
+      data-slot="select-trigger"
+      data-size={size}
+      className={cn(
+        "data-[placeholder]:text-muted-foreground cursor-pointer [&_svg:not([class*='text-'])]:text-muted-foreground flex w-fit items-center justify-center gap-4 rounded-md border bg-transparent px-3 py-2 whitespace-nowrap transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <SelectPrimitive.Icon asChild className="w-[32px] h-[32px] p-[5px] bg-transparent border-black rounded-full border-[2px]">
+       <img src={downArrow} alt=""/>
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -120,6 +148,8 @@ function SelectItem({
   )
 }
 
+
+
 function SelectSeparator({
   className,
   ...props
@@ -180,4 +210,5 @@ export {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
+  SelectTriggerForSort
 }

@@ -26,6 +26,7 @@ html,body{
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
+     line-height: 33px;
 }
 
 .noto-sans-semibold{
@@ -35,14 +36,24 @@ html,body{
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
+     line-height: 33px;
 }
 
 
 @theme inline {
+  --text-xs: 0.75rem;   /* 12px */
+  --text-sm: 0.875rem;  /* 14px */
+  --text-md: 1rem;      /* 16px */
+  --text-lg: 1.125rem;  /* 18px */
+  --text-xl: 1.5rem;    /* 24px */
+  --text-2xl: 2rem;     /* 32px */
+  --text-3xl: 2.5rem;   /* 40px */
+  --text-4xl: 3rem;     /* 48px */
   --shadow-top: 0 -10px 20px -5px rgba(0, 0, 0, 0.07);
   --shadow-bottom: 0 10px 20px -5px rgba(0, 0, 0, 0.07);
   --color-main: #FFA412;
   --color-main-hover: #FFA412;
+  --color-dark-back: rgb(45, 45, 45);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -116,7 +127,7 @@ html,body{
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: rgb(45, 45, 45);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
