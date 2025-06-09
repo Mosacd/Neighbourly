@@ -131,12 +131,12 @@ const Events = () => {
     <div className="mt-[144px] flex justify-between px-[40px]">
       <div className="max-w-[400px] w-full border-2 rounded-md p-5">
       <div className="flex items-center justify-between mb-[64px]">
-        <h1 className="noto-sans-semibold text-[24px]">Filters</h1>
+        <h1 className="noto-sans-semibold text-xl">Filters</h1>
       <Button onClick={clearAllFilters} variant={"ghost"} className="hover:bg-transparent h-fit w-fit p-0">Clear All</Button>
       </div>
       <div className="flex flex-col gap-[48px]">
       <div>
-      <h2 className="mb-[40px] noto-sans-semibold text-[24px]">Location</h2>
+      <h2 className="mb-[40px] noto-sans-semibold text-xl">Location</h2>
      
         {locations.map(({label, value}, i)=> {
           return(<div key={value} className="flex items-center hover:cursor-pointer *:hover:cursor-pointer gap-[16px]">
@@ -144,7 +144,7 @@ const Events = () => {
                 onCheckedChange={() => toggleItem(value, selectedLocations, setSelectedLocations)}
                 id={`location-${i}`}
               />
-          <label htmlFor={`location-${i}`} className="text-[24px] noto-sans-regular w-full">
+          <label htmlFor={`location-${i}`} className="text-xl noto-sans-regular w-full">
               {label}
               </label>
                   </div>
@@ -153,7 +153,7 @@ const Events = () => {
           
       </div>
         <div>
-     <h2 className="mb-[40px] noto-sans-semibold text-[24px]">Time Commitment</h2>
+     <h2 className="mb-[40px] noto-sans-semibold text-xl">Time Commitment</h2>
      
         {timeCommitments.map(({label, value}, i)=> {
           return(<div key={value} className="flex items-center gap-[16px]">
@@ -161,7 +161,7 @@ const Events = () => {
                 onCheckedChange={() => toggleItem(value, selectedTimeCommitments, setSelectedTimeCommitments)}
                 id={`timeCommitment-${i}`}
               />
-          <label htmlFor={`timeCommitment-${i}`} className="text-[24px] noto-sans-regular w-full">
+          <label htmlFor={`timeCommitment-${i}`} className="text-xl noto-sans-regular w-full">
               {label}
               </label>
                   </div>
@@ -170,7 +170,7 @@ const Events = () => {
           
       </div>
         <div>
-      <h2 className="mb-[40px] noto-sans-semibold text-[24px]">Age Requirements</h2>
+      <h2 className="mb-[40px] noto-sans-semibold text-xl">Age Requirements</h2>
      
         {ageRequirements.map(({label, value}, i)=> {
           return(<div key={value} className="flex items-center gap-[16px]">
@@ -178,7 +178,7 @@ const Events = () => {
                 onCheckedChange={() => toggleItem(value, selectedAgeRequirements, setSelectedAgeRequirements)}
                 id={`ageRequirement-${i}`}
               />
-          <label htmlFor={`ageRequirement-${i}`} className="text-[24px] noto-sans-regular w-full">
+          <label htmlFor={`ageRequirement-${i}`} className="text-xl noto-sans-regular w-full">
               {label}
               </label>
                   </div>
@@ -187,7 +187,7 @@ const Events = () => {
           
       </div>
         <div>
-      <h2 className="mb-[40px] noto-sans-semibold text-[24px]">Date</h2>
+      <h2 className="mb-[40px] noto-sans-semibold text-xl">Date</h2>
      
         {dates.map(({label, value}, i)=> {
           return(<div key={value} className="flex items-center gap-[16px]">
@@ -195,7 +195,7 @@ const Events = () => {
                 onCheckedChange={() => toggleItem(value, selectedDates, setSelectedDates)}
                 id={`date-${i}`}
               />
-          <label htmlFor={`date-${i}`} className="text-[24px] noto-sans-regular w-full">
+          <label htmlFor={`date-${i}`} className="text-xl noto-sans-regular w-full">
               {label}
               </label>
                   </div>
@@ -210,14 +210,14 @@ const Events = () => {
         <div className="flex items-center justify-between mb-[80px]">
           <SearchBar />
           <Select defaultValue="ENG">
-            <SelectTriggerForSort className="w-[240px] data-[size=default]:h-[53px] text-[24px] border-none noto-sans-semibold">
+            <SelectTriggerForSort className="w-[240px] data-[size=default]:h-[53px] text-xl border-none noto-sans-semibold">
               <SelectValue>Sort By</SelectValue>
             </SelectTriggerForSort>
             <SelectContent className="min-w-[116px]">
-              <SelectItem className="text-[24px]" value="GEO">Newest</SelectItem>
-              <SelectItem className="text-[24px]" value="ENG">Oldest</SelectItem>
-              <SelectItem className="text-[24px]" value="RUS">Alphabetically, Z-A</SelectItem>
-              <SelectItem className="text-[24px]" value="RUS">Alphabetically, A-Z</SelectItem>
+              <SelectItem className="text-xl" value="GEO">Newest</SelectItem>
+              <SelectItem className="text-xl" value="ENG">Oldest</SelectItem>
+              <SelectItem className="text-xl" value="RUS">Alphabetically, Z-A</SelectItem>
+              <SelectItem className="text-xl" value="RUS">Alphabetically, A-Z</SelectItem>
             </SelectContent>
           </Select>
         </div>

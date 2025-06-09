@@ -14,31 +14,31 @@ const Header = () => {
     const [selectedLang, setSelectedLang] = useState("ENG");
 
   return (
-  <div className="w-full h-[140px] py-[22px] px-[120px] shadow-bottom">
+  <div className="w-full h-[120px] 2xl:h-[140px] py-[18px] 2xl:py-[22px] px-[40px] xl:px-[80px] 2xl:px-[120px] shadow-bottom">
     <div className="flex justify-between">
         <Link to={'/Home'}>
         <div className="flex gap-[24px] items-center">
-          <img src={logo} alt="" />
-        <h1 className="piedra-regular text-[64px] text-main">
+          <img className="w-full max-w-[80px] 2xl:max-w-[96px]" src={logo} alt="" />
+        <h1 className="piedra-regular text-[3.25rem] 2xl:text-[4rem] text-main">
             Neighbourly
         </h1>
         </div>
         </Link>
-        <div className="flex items-center gap-[36px]">
+        <div className="flex items-center gap-6 2xl:gap-[36px]">
           <Link to={'/Events'}>
           <Button variant={"secondary"}>
             Event Catalog
           </Button>
           </Link>
         <Select defaultValue="ENG" onValueChange={setSelectedLang}>
-  <SelectTrigger className="w-[116px] data-[size=default]:h-[53px] text-[24px] border-none noto-sans-regular">
-    <img src={globe} alt="" />
+  <SelectTrigger className="w-[116px] data-[size=default]:h-[53px] text-lg 2xl:text-xl border-none noto-sans-regular">
+    <img className="max-w-[24px] 2xl:max-w-[32px]" src={globe} alt="" />
     <SelectValue>{selectedLang}</SelectValue>
   </SelectTrigger>
   <SelectContent className="min-w-[116px]">
-    <SelectItem className="text-[24px]" value="GEO"><img src={GEO} alt="" />GEO</SelectItem>
-    <SelectItem className="text-[24px]" value="ENG"><img src={ENG} alt="" />ENG</SelectItem>
-    <SelectItem className="text-[24px]" value="RUS"><img src={RUS} alt="" />RUS</SelectItem>
+    <SelectItem className="text-lg 2xl:text-xl" value="GEO"><img src={GEO} alt="" />GEO</SelectItem>
+    <SelectItem className="text-lg 2xl:text-xl" value="ENG"><img src={ENG} alt="" />ENG</SelectItem>
+    <SelectItem className="text-lg 2xl:text-xl" value="RUS"><img src={RUS} alt="" />RUS</SelectItem>
   </SelectContent>
 </Select>
 <ToggleSwitch/>
