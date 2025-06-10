@@ -194,7 +194,7 @@ function CarouselPrevious({
       className={cn(
         "absolute scale-120 w-[32px] h-[32px] 2xl:w-[40px] 2xl:h-[40px] bg-transparent hover:bg-transparent border-black border-[2px] rounded-full ",
         orientation === "horizontal"
-          ? "-bottom-1/5 left-1/2 -translate-x-[calc(100%+40px)] -translate-y-1/2"
+          ? "-bottom-1/7 sm:-bottom-1/5 left-1/2 -translate-x-[calc(100%+40px)] -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -254,7 +254,7 @@ function CarouselNext({
       className={cn(
         "absolute scale-120 w-[32px] h-[32px] 2xl:w-[40px] 2xl:h-[40px] bg-transparent hover:bg-transparent border-black rounded-full border-[2px]",
         orientation === "horizontal"
-          ? "-bottom-1/5 left-1/2 translate-x-[40px] -translate-y-1/2"
+          ? "-bottom-1/7 sm:-bottom-1/5 left-1/2 translate-x-[40px] -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
@@ -309,7 +309,7 @@ function CarouselIndicator({
   return (
     <div
       className={cn(
-        "absolute scale-120 -bottom-1/5 left-1/2 -translate-x-1/2 -translate-y-5/6 2xl:-translate-y-2/5 2xl:py-1.5 text-lg 2xl:text-xl noto-sans-semibold",
+        "absolute scale-120 -bottom-1/7 sm:-bottom-1/5 left-1/2 -translate-x-1/2 -translate-y-5/6 2xl:-translate-y-2/5 2xl:py-1.5 text-lg 2xl:text-xl noto-sans-semibold",
         className
       )}
       {...props}

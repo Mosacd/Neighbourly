@@ -15,11 +15,11 @@ const Header = () => {
     const [selectedLang, setSelectedLang] = useState("ENG");
 
   return (
-  <div className="w-full h-[120px] 2xl:h-[140px] py-[18px] 2xl:py-[22px] px-[40px] xl:px-[80px] 2xl:px-[120px] shadow-bottom">
-    <div className="flex justify-between">
+  <div className="flex items-center w-full h-[80px] sm:h-[120px] 2xl:h-[140px] sm:py-[18px] 2xl:py-[22px] px-[24px] sm:px-[40px] xl:px-[80px] 2xl:px-[120px] shadow-bottom">
+    <div className="flex items-center w-full justify-between">
         <Link to={'/Home'}>
         <div className="flex group gap-[8px] sm:gap-[24px] items-center">
-<svg className="shrink-0 w-full max-w-[32px] sm:max-w-[80px] 2xl:max-w-[96px] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg className="shrink-0 w-full max-w-[40px] sm:max-w-[80px] 2xl:max-w-[96px] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300" width="" height="" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
   {/* Heart part - will turn red on hover */}
   <path className="group-hover:fill-red-500 transition-colors duration-300" d="M64 12.92C66.84 9.64 70.44 8 74.8 8C78.44 8 81.48 9.32 84 12C86.52 14.68 87.84 17.72 88 21.2C88 24 86.68 27.24 84 31.04C81.32 34.84 78.72 38 76.12 40.6C73.52 43.16 69.48 46.96 64 52C58.44 46.96 54.36 43.16 51.76 40.6C47.86 36.76 46.52 34.84 43.88 31.04C41.24 27.24 40 24 40 21.2C40 17.56 41.28 14.52 43.88 12C46.48 9.48 49.6 8.16 53.24 8C57.52 8 61.08 9.64 64 12.92Z" fill="#FFA412"/>
   
@@ -28,14 +28,14 @@ const Header = () => {
 </svg>
 
 
-<h1 className="piedra-regular group-hover:tracking-wider duration-200 text-xl sm:text-[3.25rem] 2xl:text-[4rem] text-main">
+<h1 className="piedra-regular group-hover:tracking-wider duration-200 text-2xl sm:text-[3.25rem] 2xl:text-[4rem] text-main">
             Neighbourly
         </h1>
         </div>
         </Link>
         <div className="flex lg:hidden items-center">
           <Button variant={"outline"} className="group w-fit px-1 bg-transparent shadow-none hover:shadow-none border-none">
-          <img className="shrink-0 size-11" src={burgerMenuIcon} alt="" />
+          <img className="shrink-0 sm:size-11" src={burgerMenuIcon} alt="" />
           </Button>
         </div>
         <div className="hidden lg:flex items-center gap-6 2xl:gap-[36px]">
