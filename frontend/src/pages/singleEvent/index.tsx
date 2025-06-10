@@ -25,9 +25,9 @@ const SingleEvent = () => {
 
     return (
         <>
-        <div className="w-full px-[30px]">
+        <div className="w-full">
         <div className="noto-sans-semibold text-lg 2xl:text-xl max-w-[1408px] 2xl:max-w-[1680px] m-auto mt-[80px] mb-[120px]">{location.pathname.slice(1, -2)} / Animal Shelter Helper Day</div>
-        <div className="flex justify-between gap-[20px] w-full max-h-[801px] max-w-[1680px] m-auto mb-[200px]">
+        <div className="flex px-[30px] text-center lg:text-start flex-col-reverse items-center lg:items-stretch lg:flex-row justify-between gap-[20px] w-full lg:max-h-[801px] 2xl:max-w-[1680px] m-auto mb-[200px]">
             <div className="flex flex-col gap-[40px] justify-between max-w-[720px] 2xl:max-w-[830px] w-full">
                <div className="overflow-y-auto pr-5"  style={{
     scrollbarWidth: "thin",
@@ -47,9 +47,9 @@ const SingleEvent = () => {
                    {eventData[convertedId-1]?.description} </p>
                 </div>
                 </div>
-                <div className="flex gap-10">
-                <Button variant={"default"} className="max-w-[210px] 2xl:max-w-[264px] w-full">Sign Up</Button>
-                <Button variant={"secondary"} className="max-w-[210px] 2xl:max-w-[264px] w-full">Bookmark</Button>
+                <div className="flex w-full justify-center items-center flex-col sm:flex-row sm:justify-between lg:justify-start gap-3 lg:gap-10">
+                <Button variant={"default"} className="shrink-1 lg:max-w-[210px] 2xl:max-w-[264px] w-full max-lg:h-[53px] max-lg:text-[24px] max-w-[343px]">Sign Up</Button>
+                <Button variant={"secondary"} className="shrink-1 lg:max-w-[210px] 2xl:max-w-[264px] w-full max-lg:h-[53px] max-lg:text-[24px] max-w-[343px]">Bookmark</Button>
                 </div>
             </div>
             <img className="w-full max-w-[652px] 2xl:max-w-[830px] rounded-[24px]" src={img} alt="" />
