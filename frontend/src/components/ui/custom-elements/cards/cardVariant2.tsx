@@ -6,10 +6,10 @@ import type { VolunteerOpportunity } from "@/dummyData";
 const CardForSingleEvent:React.FC<{data:VolunteerOpportunity}> = ({data}) => {
 
 return(    
-<div className="bg-white m-auto border-2 shadow-md py-[29px] px-[24px] max-h-[409px] rounded-[24px] max-w-[1363px] w-full active:cursor-grabbing select-none">
-              <div className="flex justify-between items-center">
-                <div className="w-full max-w-[852px] h-[253px]">
-                    <h1 className="noto-sans-semibold text-3xl mb-[48px]">{data.title}</h1>
+<div className="bg-white m-auto border-2 shadow-md py-[21px] 2xl:py-[29px] px-[16px] 2xl:px-[24px] max-h-[409px] rounded-[24px] max-w-[1190px] 2xl:max-w-[1363px] w-full active:cursor-grabbing select-none">
+              <div className="flex justify-between items-center gap-6 2xl:gap-10">
+                <div className="w-full max-w-[852px] h-[253px] md:text-start md:items-start">
+                    <h1 className="noto-sans-semibold text-3xl mb-[24px] md:mb-[40px] 2xl:mb-[48px]">{data.title}</h1>
                     <p className="noto-sans-regular text-xl text-[#828282] mb-[32px]">{data.description}</p>
                    <Link to={`/Events/${data.id}`}><Button variant={"secondary"}>See More</Button></Link> 
                 </div>

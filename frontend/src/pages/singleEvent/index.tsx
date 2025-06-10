@@ -26,33 +26,33 @@ const SingleEvent = () => {
     return (
         <>
         <div className="w-full px-[30px]">
-        <div className="noto-sans-semibold text-xl max-w-[1680px] m-auto mt-[80px] mb-[120px]">{location.pathname.slice(1, -2)} / Animal Shelter Helper Day</div>
+        <div className="noto-sans-semibold text-lg 2xl:text-xl max-w-[1408px] 2xl:max-w-[1680px] m-auto mt-[80px] mb-[120px]">{location.pathname.slice(1, -2)} / Animal Shelter Helper Day</div>
         <div className="flex justify-between gap-[20px] w-full max-h-[801px] max-w-[1680px] m-auto mb-[200px]">
-            <div className="flex flex-col gap-[40px] justify-between max-w-[830px] w-full">
+            <div className="flex flex-col gap-[40px] justify-between max-w-[720px] 2xl:max-w-[830px] w-full">
                <div className="overflow-y-auto pr-5"  style={{
     scrollbarWidth: "thin",
   }}>
                <div className="mb-[73px]">
-                <h1 className="text-4xl mb-5 noto-sans-semibold">
+                <h1 className="text-3xl 2xl:text-4xl mb-5 noto-sans-semibold">
             {eventData[convertedId-1]?.title}
                 </h1>
-                <span className="noto-sans-semibold text-neutral-500 text-xl">Begins on {formatDate(eventData[convertedId-1]?.startdate.toString())}</span>
+                <span className="noto-sans-semibold text-neutral-500 text-lg 2xl:text-xl">Begins on {formatDate(eventData[convertedId-1]?.startdate.toString())}</span>
                 </div>
                 <div className="flex flex-col gap-[40px]">
                     <div className="flex flex-col gap-[16px] ">
-                    <p className="noto-sans-semibold text-xl">🌍Location - {eventData[convertedId-1]?.location}</p>
-                    <p className="noto-sans-semibold text-xl">📅Schedule - {eventData[convertedId-1]?.schedule}</p>
+                    <p className="noto-sans-semibold text-lg 2xl:text-xl">🌍Location - {eventData[convertedId-1]?.location}</p>
+                    <p className="noto-sans-semibold text-lg 2xl:text-xl">📅Schedule - {eventData[convertedId-1]?.schedule}</p>
                     </div>
-                <p className="noto-sans-regular text-xl max-h-[385px]">
+                <p className="noto-sans-regular text-lg 2xl:text-xl max-h-[385px]">
                    {eventData[convertedId-1]?.description} </p>
                 </div>
                 </div>
                 <div className="flex gap-10">
-                <Button variant={"default"} className="max-w-[264px] w-full">Sign Up</Button>
-                <Button variant={"secondary"} className="max-w-[264px] w-full">Bookmark</Button>
+                <Button variant={"default"} className="max-w-[210px] 2xl:max-w-[264px] w-full">Sign Up</Button>
+                <Button variant={"secondary"} className="max-w-[210px] 2xl:max-w-[264px] w-full">Bookmark</Button>
                 </div>
             </div>
-            <img className="w-full max-w-[830px] rounded-[24px]" src={img} alt="" />
+            <img className="w-full max-w-[652px] 2xl:max-w-[830px] rounded-[24px]" src={img} alt="" />
         </div>
         <CaruselSection/>
         </div>
