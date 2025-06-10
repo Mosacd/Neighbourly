@@ -1,8 +1,11 @@
 import {
   Carousel,
   CarouselContent,
+  CarouselIndicator,
   CarouselItem,
+  CarouselNext,
   CarouselNext2,
+  CarouselPrevious,
   CarouselPrevious2,
 } from "@/components/ui/carousel";
 import CardForSingleEvent from "../cards/cardVariant2";
@@ -18,8 +21,11 @@ const CaruselEvent = () => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious2 />
-      <CarouselNext2 />
+      <CarouselPrevious2 className="hidden md:flex" />
+      <CarouselNext2 className="hidden md:flex"  />
+         <CarouselPrevious className=" md:hidden"  />
+      <CarouselNext className=" md:hidden"  />
+       <CarouselIndicator className=" md:hidden"  />
     </Carousel>
   );
 };
