@@ -27,7 +27,7 @@ const SingleEvent = () => {
         <>
         <div className="w-full">
         <div className="noto-sans-semibold px-[30px] text-center md:text-start text-lg 2xl:text-xl max-w-[1408px] 2xl:max-w-[1680px] m-auto mt-[60px] mb-[80px] sm:mt-[80px] sm:mb-[120px]">{location.pathname.slice(1, -2)} / Animal Shelter Helper Day</div>
-        <div className="flex px-[30px] text-center lg:text-start flex-col-reverse items-center lg:items-stretch lg:flex-row justify-between gap-[20px] w-full lg:max-h-[801px] 2xl:max-w-[1680px] m-auto mb-[120px] sm:mb-[200px]">
+        <div className="flex px-[30px] text-center lg:text-start flex-col-reverse items-center lg:items-stretch lg:flex-row justify-between gap-[20px] w-full lg:max-h-[801px] max-w-[1408px] 2xl:max-w-[1680px] m-auto mb-[120px] sm:mb-[200px]">
             <div className="flex flex-col gap-[40px] justify-between max-w-[720px] 2xl:max-w-[830px] w-full">
                <div className="overflow-y-auto pr-5"  style={{
     scrollbarWidth: "thin",
