@@ -33,15 +33,15 @@ const SingleEvent = () => {
     scrollbarWidth: "thin",
   }}>
                <div className="mb-[73px]">
-                <h1 className="mb-5 noto-sans-semibold text-2xl md:text-3xl 2xl:text-4xl">
+                <h1 className="mb-5 noto-sans-semibold text-xl sm:text-2xl md:text-3xl 2xl:text-4xl">
             {eventData[convertedId-1]?.title}
                 </h1>
-                <span className="noto-sans-semibold text-neutral-500 text-lg 2xl:text-xl">Begins on {formatDate(eventData[convertedId-1]?.startdate.toString())}</span>
+                <span className="noto-sans-semibold text-neutral-500 text-md sm:text-lg 2xl:text-xl">Begins on {formatDate(eventData[convertedId-1]?.startdate.toString())}</span>
                 </div>
                 <div className="flex flex-col gap-[40px]">
                     <div className="flex flex-col gap-[16px] ">
-                    <p className="noto-sans-semibold text-lg 2xl:text-xl">🌍Location - {eventData[convertedId-1]?.location}</p>
-                    <p className="noto-sans-semibold text-lg 2xl:text-xl">📅Schedule - {eventData[convertedId-1]?.schedule}</p>
+                    <p className="noto-sans-semibold text-md sm:text-lg 2xl:text-xl">🌍Location - {eventData[convertedId-1]?.location}</p>
+                    <p className="noto-sans-semibold text-md sm:text-lg 2xl:text-xl">📅Schedule - {eventData[convertedId-1]?.schedule}</p>
                     </div>
                 <p className="noto-sans-regular text-lg 2xl:text-xl max-h-[385px]">
                    {eventData[convertedId-1]?.description} </p>

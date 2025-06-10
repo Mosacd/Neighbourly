@@ -29,7 +29,7 @@ html,body{
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
-     line-height: 33px;
+     line-height: normal;
 }
 
 .noto-sans-semibold{
@@ -39,7 +39,7 @@ html,body{
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
-     line-height: 33px;
+     line-height: normal;
 }
 
 

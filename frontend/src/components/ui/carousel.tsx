@@ -309,7 +309,7 @@ function CarouselIndicator({
   return (
     <div
       className={cn(
-        "absolute scale-120 -bottom-1/5 left-1/2 -translate-x-1/2 -translate-y-1/2  2xl:py-1.5 text-lg 2xl:text-xl noto-sans-semibold",
+        "absolute scale-120 -bottom-1/5 left-1/2 -translate-x-1/2 -translate-y-5/6 2xl:-translate-y-2/5 2xl:py-1.5 text-lg 2xl:text-xl noto-sans-semibold",
         className
       )}
       {...props}
