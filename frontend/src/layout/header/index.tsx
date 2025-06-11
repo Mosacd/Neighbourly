@@ -1,6 +1,5 @@
 // import logo from "@/assets/Neighbourly logo.svg"
 import globe from "@/assets/globe.svg"
-import burgerMenuIcon from "@/assets/burger-menu-icon.svg"
 import { Button } from "@/components/ui/button";
 import ToggleSwitch from "@/components/ui/custom-elements/customToggle";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -9,6 +8,8 @@ import RUS from "@/assets/lang/russia 1.svg"
 import ENG from "@/assets/lang/usa 1.svg"
 import { useState } from "react";
 import { Link } from "react-router-dom";
+// import burgerMenuIcon from "@/assets/burger-menu-icon.svg"
+import Menu from "@/components/sections/menu";
 
 const Header = () => {
 
@@ -24,17 +25,12 @@ const Header = () => {
   <path d="M88 76V80L56 90L28 82.24V88H4V44H35.88L60.52 53.2C62.7156 54.0282 64.6072 55.505 65.9433 57.4342C67.2794 59.3633 67.9967 61.6534 68 64H76C82.64 64 88 69.36 88 76ZM20 80V52H12V80H20ZM79.6 74.28C78.96 72.96 77.56 72 76 72H54.6C52.44 72 50.32 71.68 48.28 71L38.76 67.84L41.28 60.24L50.8 63.4C52 63.8 60 64 60 64C60 62.52 59.08 61.2 57.72 60.68L34.44 52H28V74L55.88 81.64L79.6 74.28Z" fill="#FFA412"/>
 </svg>
 
-
 <h1 className="piedra-regular group-hover:tracking-wider duration-200 text-2xl sm:text-[3.25rem] 2xl:text-[4rem] text-main">
             Neighbourly
         </h1>
         </div>
         </Link>
-        <div className="flex lg:hidden items-center">
-          <Button variant={"outline"} className="group w-fit px-1 bg-transparent shadow-none hover:shadow-none border-none">
-          <img className="shrink-0 sm:size-11" src={burgerMenuIcon} alt="" />
-          </Button>
-        </div>
+        <Menu />
         <div className="hidden lg:flex items-center gap-6 2xl:gap-[36px]">
           <Link to={'/Events'}>
           <Button variant={"secondary"}>
