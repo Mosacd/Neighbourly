@@ -14,7 +14,7 @@ const ToggleSwitch = () => {
     <button
       onClick={handleToggle}
       className={`
-        relative hover:cursor-pointer inline-flex h-[40px] w-[80px] 2xl:h-[48px] 2xl:w-[96px] items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none
+        relative hover:cursor-pointer inline-flex h-[56px] w-[112px] lg:h-[40px] lg:w-[80px] 2xl:h-[48px] 2xl:w-[96px] items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none
         ${isOn 
           ? 'bg-main'
           : 'bg-gray-300'
@@ -23,8 +23,8 @@ const ToggleSwitch = () => {
     >
       <img src={darkModeSVG}
         className={`
-          inline-block h-8 w-8 2xl:h-10 2xl:w-10 transform rounded-full bg-white shadow-lg transition-transform duration-200 ease-in-out
-          ${isOn ? 'translate-x-11 2xl:translate-x-13' : 'translate-x-1'}
+          inline-block h-12 w-12 lg:h-8 lg:w-8 2xl:h-10 2xl:w-10 transform rounded-full bg-white shadow-lg transition-transform duration-200 ease-in-out
+          ${isOn ? 'translate-x-15 lg:translate-x-11 2xl:translate-x-13' : 'translate-x-1'}
         `}
       />
     </button>

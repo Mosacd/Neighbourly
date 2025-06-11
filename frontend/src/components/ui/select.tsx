@@ -63,13 +63,13 @@ function SelectTriggerForSort({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "data-[placeholder]:text-muted-foreground cursor-pointer [&_svg:not([class*='text-'])]:text-muted-foreground flex w-fit items-center justify-center gap-4 rounded-md border bg-transparent px-3 py-2 whitespace-nowrap transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "data-[placeholder]:text-muted-foreground cursor-pointer [&_svg:not([class*='text-'])]:text-muted-foreground flex w-fit items-center justify-center gap-[6px] sm:gap-4 rounded-md border bg-transparent px-3 py-2 whitespace-nowrap transition-[color,box-shadow] outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon asChild className="w-[32px] h-[32px] p-[5px] bg-transparent border-black rounded-full border-[2px]">
+      <SelectPrimitive.Icon asChild className="w-[24px] h-[24px] 2xl:w-[32px] 2xl:h-[32px] p-[5px] bg-transparent border-black rounded-full border-[2px]">
        <img src={downArrow} alt=""/>
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
@@ -133,7 +133,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "focus:bg-accent justify-center border-x-2 focus:cursor-pointer border-transparent focus:border-l-blue-900 focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-[10px]",
+        "focus:bg-accent justify-center border-x-2 text-md sm:text-lg 2xl:text-xl focus:cursor-pointer border-transparent focus:border-l-blue-900 focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 py-1.5 outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-[10px]",
         className
       )}
       {...props}
