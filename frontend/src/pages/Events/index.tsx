@@ -130,16 +130,19 @@ const Events = () => {
   return (
     <div className="mt-[144px] flex justify-between px-[40px]">
       <div className="max-w-[400px] w-full border-2 rounded-md p-5">
-      <div className="flex items-center justify-between mb-[64px]">
-        <h1 className="noto-sans-semibold text-xl">Filters</h1>
-      <Button onClick={clearAllFilters} variant={"ghost"} className="hover:bg-transparent h-fit w-fit p-0">Clear All</Button>
+      <div className="flex items-center flex-col gap-5 justify-between mb-[44px]">
+        <h1 className="noto-sans-semibold text-3xl w-full text-center">Filters</h1>
+        <div className="border-y-2 w-full flex items-center justify-center">
+      <Button onClick={clearAllFilters} variant={"ghost"} className="text-red-800 2xl:text-[24px] hover:text-red-700 hover:bg-transparent h-fit w-fit p-0">Clear All</Button>
       </div>
-      <div className="flex flex-col gap-[48px]">
+      </div>
+      <div className="flex justify-center">
+      <div className="flex flex-col gap-[48px] w-fit pb-10">
       <div>
-      <h2 className="mb-[40px] noto-sans-semibold text-xl">Location</h2>
+      <h2 className="mb-[40px] noto-sans-semibold text-xl text-center border-b-2 pb-2">Location</h2>
      
         {locations.map(({label, value}, i)=> {
-          return(<div key={value} className="flex items-center hover:cursor-pointer *:hover:cursor-pointer gap-[16px]">
+          return(<div key={value} className="flex items-center *:hover:cursor-pointer gap-[16px]">
               <Checkbox checked={selectedLocations.includes(value)}
                 onCheckedChange={() => toggleItem(value, selectedLocations, setSelectedLocations)}
                 id={`location-${i}`}
@@ -153,10 +156,10 @@ const Events = () => {
           
       </div>
         <div>
-     <h2 className="mb-[40px] noto-sans-semibold text-xl">Time Commitment</h2>
+     <h2 className="mb-[40px] noto-sans-semibold text-xl text-center border-b-2 pb-2">Time Commitment</h2>
      
         {timeCommitments.map(({label, value}, i)=> {
-          return(<div key={value} className="flex items-center gap-[16px]">
+          return(<div key={value} className="flex items-center *:hover:cursor-pointer gap-[16px]">
               <Checkbox checked={selectedTimeCommitments.includes(value)}
                 onCheckedChange={() => toggleItem(value, selectedTimeCommitments, setSelectedTimeCommitments)}
                 id={`timeCommitment-${i}`}
@@ -170,10 +173,10 @@ const Events = () => {
           
       </div>
         <div>
-      <h2 className="mb-[40px] noto-sans-semibold text-xl">Age Requirements</h2>
+      <h2 className="mb-[40px] noto-sans-semibold text-xl text-center border-b-2 pb-2">Age Requirements</h2>
      
         {ageRequirements.map(({label, value}, i)=> {
-          return(<div key={value} className="flex items-center gap-[16px]">
+          return(<div key={value} className="flex items-center *:hover:cursor-pointer gap-[16px]">
               <Checkbox checked={selectedAgeRequirements.includes(value)}
                 onCheckedChange={() => toggleItem(value, selectedAgeRequirements, setSelectedAgeRequirements)}
                 id={`ageRequirement-${i}`}
@@ -187,10 +190,10 @@ const Events = () => {
           
       </div>
         <div>
-      <h2 className="mb-[40px] noto-sans-semibold text-xl">Date</h2>
+      <h2 className="mb-[40px] noto-sans-semibold text-xl text-center border-b-2 pb-2">Date</h2>
      
         {dates.map(({label, value}, i)=> {
-          return(<div key={value} className="flex items-center gap-[16px]">
+          return(<div key={value} className="flex items-center *:hover:cursor-pointer gap-[16px]">
               <Checkbox checked={selectedDates.includes(value)}
                 onCheckedChange={() => toggleItem(value, selectedDates, setSelectedDates)}
                 id={`date-${i}`}
@@ -204,7 +207,8 @@ const Events = () => {
           
       </div>
       </div>
-      
+      </div>
+
       </div>
       <div className="max-w-[1113px] w-full">
         <div className="flex items-center justify-between mb-[80px]">
