@@ -217,11 +217,11 @@ const Events = () => {
             <SelectTriggerForSort className="w-full max-w-[120px] sm:max-w-[180px] 2xl:max-w-[240px] data-[size=default]:h-[53px] text-md sm:text-lg 2xl:text-xl border-none noto-sans-semibold">
               <SelectValue>Sort By</SelectValue>
             </SelectTriggerForSort> 
-            <SelectContent className="min-w-[116px]">
+            <SelectContent className="min-w-[116px] max-xs:max-w-[120px]">
               <SelectItem value="GEO">Newest</SelectItem>
               <SelectItem value="ENG">Oldest</SelectItem>
-              <SelectItem  value="RUS">Alphabetically, Z-A</SelectItem>
-              <SelectItem value="RUS">Alphabetically, A-Z</SelectItem>
+              <SelectItem  value="RUS"><span className="max-xs:hidden">Alphabetically, </span>Z-A</SelectItem>
+              <SelectItem value="RUS"><span className="max-xs:hidden">Alphabetically, </span>A-Z</SelectItem>
             </SelectContent>
           </Select>
         </div>
