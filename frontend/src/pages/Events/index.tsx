@@ -128,8 +128,8 @@ const Events = () => {
 
 
   return (
-    <div className="mt-[144px] flex justify-between gap-20 px-[40px]">
-      <div className="max-w-[334px] h-fit 2xl:max-w-[400px] w-full border-2 rounded-md p-5 shrink-2">
+    <div className="mt-[100px] sm:mt-[144px] flex justify-between gap-20 px-[16px] sm:px-[40px]">
+      <div className="hidden lg:block max-w-[334px] h-fit 2xl:max-w-[400px] w-full border-2 rounded-md p-5 shrink-2">
       <div className="flex items-center flex-col gap-5 justify-between mb-[44px]">
         <h1 className="noto-sans-semibold text-2xl 2xl:text-3xl w-full text-center">Filters</h1>
         <div className="border-y-2 w-full flex items-center justify-center">
@@ -211,10 +211,10 @@ const Events = () => {
 
       </div>
       <div className="max-w-[931px] 2xl:max-w-[1113px] w-full">
-        <div className="flex items-center justify-between mb-[80px]">
+        <div className="flex flex-col xs:flex-row items-center justify-between mb-[40px] sm:mb-[60px] 2xl:mb-[80px]">
           <SearchBar />
           <Select defaultValue="ENG">  
-            <SelectTriggerForSort className="w-full max-w-[240px] data-[size=default]:h-[53px] text-lg 2xl:text-xl border-none noto-sans-semibold">
+            <SelectTriggerForSort className="w-full max-w-[120px] sm:max-w-[180px] 2xl:max-w-[240px] data-[size=default]:h-[53px] text-md sm:text-lg 2xl:text-xl border-none noto-sans-semibold">
               <SelectValue>Sort By</SelectValue>
             </SelectTriggerForSort> 
             <SelectContent className="min-w-[116px]">
@@ -225,7 +225,7 @@ const Events = () => {
             </SelectContent>
           </Select>
         </div>
-        <div className="flex flex-col items-center gap-[24px]">
+        <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-1  items-center gap-x-[10px] gap-y-[24px] sm:gap-[20px] md:gap-[24px]">
           {eventData.map((data) => {
             return <CardForEventList data={data} />;
           })}

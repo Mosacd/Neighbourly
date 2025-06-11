@@ -47,7 +47,19 @@ html,body{
   display: none;
 }
 
+.description-clamp-eventpage {
+    display: none;
+}
 
+@media (min-width: 1024px) {
+.description-clamp-eventpage {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 
 @media (min-width: 768px) {
   .description-clamp {
@@ -57,6 +69,7 @@ html,body{
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .title-clamp {
    display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -68,7 +81,8 @@ html,body{
 
 
 @theme inline {
-   --breakpoint-sm: 640px;
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;

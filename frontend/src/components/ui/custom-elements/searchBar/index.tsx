@@ -3,10 +3,10 @@ import { Input } from "../../input";
 const SearchBar = () => {
 
     return(
-        <div className="relative group w-full max-w-[648px] 2xl:max-w-[830px]">
-        <Input placeholder="search..." className="h-[42px] 2xl:h-[53px] rounded-[8px] border-2 py-[10px] px-[24px] pl-[52px] noto-sans-semibold border-[#696363]"/>
+        <div className="relative group w-full sm:max-w-[648px] 2xl:max-w-[830px]">
+        <Input placeholder="search..." className="h-[32px] sm:h-[42px] 2xl:h-[53px] rounded-[8px] border-2 py-[10px] px-[24px] xs:pl-[52px] noto-sans-semibold border-[#696363]"/>
     <svg
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-[24px] h-[24px] 2xl:w-[32px] 2xl:h-[32px] fill-[#696363] group-focus-within:fill-black pointer-events-none"
+        className="absolute left-1 xs:left-4 top-1/2 -translate-y-1/2 w-[20px] h-[20px] xs:w-[24px] xs:h-[24px] 2xl:w-[32px] 2xl:h-[32px] fill-[#696363] group-focus-within:fill-black pointer-events-none"
         width="32"
         height="33"
         viewBox="0 0 32 33"
