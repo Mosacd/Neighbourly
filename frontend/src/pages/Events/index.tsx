@@ -27,11 +27,10 @@ const Events = () => {
 
       <div className="max-w-[931px] 2xl:max-w-[1113px] w-full">
         <div className="flex flex-col gap-5 md:flex-row items-center justify-between mb-[40px] sm:mb-[60px] 2xl:mb-[80px]">
-         {!isDesktop && <FiltersMobile />}
           <SearchBar />
-          <div>
+          <div className="flex w-full max-w-[250px] justify-between">
           <Select defaultValue="ENG">  
-            <SelectTriggerForSort className="w-full min-w-[110px] max-w-[120px] px-0 sm:max-w-[180px] 2xl:max-w-[240px] data-[size=default]:h-[53px] text-md sm:text-lg 2xl:text-xl border-none noto-sans-semibold">
+            <SelectTriggerForSort className="w-full min-w-[110px] max-w-[120px] px-0 2xl:max-w-[240px] data-[size=default]:h-[53px] text-md sm:text-lg 2xl:text-xl border-none noto-sans-semibold">
               <SelectValue>Sort By</SelectValue>
             </SelectTriggerForSort> 
             <SelectContent className="min-w-[116px] max-xs:max-w-[120px]">
@@ -41,6 +40,7 @@ const Events = () => {
               <SelectItem value="RUS"><span className="max-xs:hidden">Alphabetically, </span>A-Z</SelectItem>
             </SelectContent>
           </Select>
+           {!isDesktop && <FiltersMobile />}
           </div>
         </div>
         <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-1  items-center gap-x-[10px] gap-y-[24px] sm:gap-[20px] md:gap-[24px]">
