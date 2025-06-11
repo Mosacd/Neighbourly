@@ -69,7 +69,7 @@ function SelectTriggerForSort({
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon asChild className="w-[32px] h-[32px] p-[5px] bg-transparent border-black rounded-full border-[2px]">
+      <SelectPrimitive.Icon asChild className="w-[24px] h-[24px] 2xl:w-[32px] 2xl:h-[32px] p-[5px] bg-transparent border-black rounded-full border-[2px]">
        <img src={downArrow} alt=""/>
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
@@ -133,7 +133,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "focus:bg-accent justify-center border-x-2 focus:cursor-pointer border-transparent focus:border-l-blue-900 focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-[10px]",
+        "focus:bg-accent justify-center border-x-2 text-lg 2xl:text-xl focus:cursor-pointer border-transparent focus:border-l-blue-900 focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 py-1.5 outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-[10px]",
         className
       )}
       {...props}
