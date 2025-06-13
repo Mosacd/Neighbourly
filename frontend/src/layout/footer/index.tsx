@@ -7,7 +7,7 @@
 const Footer = () => {
   return (
     <div className="h-[320px] sm:h-[400px] 2xl:h-[465px] p-[24px] md:py-[95px] md:px-[40px] xl:px-[80px] 2xl:px-[120px] 2xl:py-[119px] mt-[80px] sm:mt-[120px] shadow-top dark:shadow-neutral-800">
-      <div className="flex flex-col md:flex-row gap-10 sm:justify-between sm:items-center w-full h-full m-auto max-w-[1200px] 2xl:max-w-[1475px]">
+      <div className="flex flex-col md:flex-row gap-1 md:gap-10 sm:justify-between sm:items-center w-full h-full m-auto max-w-[1200px] 2xl:max-w-[1475px]">
         <div className="flex gap-[8px] sm:gap-[24px] items-center">
           <svg
             className="w-full max-w-[40px] sm:max-w-[80px] fill-main dark:fill-yellow-600 2xl:max-w-[96px]"
@@ -35,7 +35,7 @@ const Footer = () => {
             <a href="#">Q&amp;A</a>
           </div>
 
-          <div className="flex items-center gap-4 pt-8">
+          <div className="flex items-center gap-4 pt-4 md:pt-8">
             <span>Follow Us:</span>
             <a href="#">
               <svg
