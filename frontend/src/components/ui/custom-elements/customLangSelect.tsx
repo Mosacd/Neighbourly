@@ -13,7 +13,7 @@ const LanguageSelect = () => {
       
     return (
 <Select defaultValue="ENG" onValueChange={setSelectedLang}>
-  <SelectTrigger className="w-fit lg:w-[116px] data-[size=default]:h-[53px] text-2xl lg:text-lg 2xl:text-xl border-none noto-sans-regular">
+  <SelectTrigger className="w-fit lg:w-[116px] data-[size=default]:h-[53px] text-xl lg:text-lg 2xl:text-xl border-none noto-sans-regular">
     <img className="max-w-[32px] lg:max-w-[24px] 2xl:max-w-[32px]" src={globe} alt="" />
     <SelectValue>{selectedLang}</SelectValue>
   </SelectTrigger>

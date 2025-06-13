@@ -26,14 +26,16 @@ const Events = () => {
       )}
 
       <div className="max-w-[931px] 2xl:max-w-[1113px] w-full">
-        <div className="flex flex-col gap-5 md:flex-row items-center justify-between mb-[40px] sm:mb-[60px] 2xl:mb-[80px]">
+        <div className="flex flex-col gap-5 md:flex-row items-center justify-between lg:justify-center mb-[40px] sm:mb-[60px] 2xl:mb-[80px]">
           <SearchBar />
-          <div className="flex w-full max-w-[250px] justify-between">
+          <div className="flex w-full max-w-[250px] lg:w-fit justify-between">
           <Select defaultValue="ENG">  
-            <SelectTriggerForSort className="w-full min-w-[110px] max-w-[120px] px-0 2xl:max-w-[240px] data-[size=default]:h-[53px] text-md sm:text-lg 2xl:text-xl border-none noto-sans-semibold">
+            <SelectTriggerForSort className="w-full min-w-[110px] lg:min-w-[130px] max-w-[120px] px-0 2xl:max-w-[240px] data-[size=default]:h-[53px] text-md sm:text-lg 2xl:text-xl border-none noto-sans-semibold">
               <SelectValue>Sort By</SelectValue>
             </SelectTriggerForSort> 
-            <SelectContent className="min-w-[116px] max-xs:max-w-[120px]">
+            <SelectContent  position="popper"
+                sideOffset={5}
+                align="center" className="min-w-[116px] max-xs:max-w-[120px] ">
               <SelectItem value="GEO">Newest</SelectItem>
               <SelectItem value="ENG">Oldest</SelectItem>
               <SelectItem  value="RUS"><span className="max-xs:hidden">Alphabetically, </span>Z-A</SelectItem>

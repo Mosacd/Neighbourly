@@ -35,7 +35,7 @@ const Menu = () => {
               </Link>
             </SheetClose>
            
-              <div className="flex justify-between">
+              <div className="flex justify-around">
                  <LanguageSelect /> 
                 <ToggleSwitch />
               </div>

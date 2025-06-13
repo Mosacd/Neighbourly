@@ -1,42 +1,148 @@
-import logo from "@/assets/Neighbourly logo.svg"
-import fb from "@/assets/mediaLinks/basil_facebook-outline.svg"
-import tw from "@/assets/mediaLinks/prime_twitter.svg"
-import tt from "@/assets/mediaLinks/meteor-icons_tiktok.svg"
-import inst from "@/assets/mediaLinks/mdi_instagram.svg"
+// import logo from "@/assets/Neighbourly logo.svg";
+// import fb from "@/assets/mediaLinks/basil_facebook-outline.svg";
+// import tw from "@/assets/mediaLinks/prime_twitter.svg";
+// import tt from "@/assets/mediaLinks/meteor-icons_tiktok.svg";
+// import inst from "@/assets/mediaLinks/mdi_instagram.svg";
 
 const Footer = () => {
-
-    return(
-        <div className="h-[320px] sm:h-[400px] 2xl:h-[465px] p-[24px] md:py-[95px] md:px-[40px] xl:px-[80px] 2xl:px-[120px] 2xl:py-[119px] mt-[80px] sm:mt-[120px] shadow-top">
-                <div className="flex flex-col md:flex-row gap-10 sm:justify-between sm:items-center w-full h-full m-auto max-w-[1200px] 2xl:max-w-[1475px]">
- <div className="flex gap-[8px] sm:gap-[24px] items-center">
-          <img className="w-full max-w-[40px] sm:max-w-[80px] 2xl:max-w-[96px]" src={logo} alt="" />
-        <h1 className="piedra-regular text-2xl sm:text-[3.25rem] 2xl:text-[4rem] text-main">
+  return (
+    <div className="h-[320px] sm:h-[400px] 2xl:h-[465px] p-[24px] md:py-[95px] md:px-[40px] xl:px-[80px] 2xl:px-[120px] 2xl:py-[119px] mt-[80px] sm:mt-[120px] shadow-top dark:shadow-neutral-800">
+      <div className="flex flex-col md:flex-row gap-10 sm:justify-between sm:items-center w-full h-full m-auto max-w-[1200px] 2xl:max-w-[1475px]">
+        <div className="flex gap-[8px] sm:gap-[24px] items-center">
+          <svg
+            className="w-full max-w-[40px] sm:max-w-[80px] fill-main dark:fill-yellow-600 2xl:max-w-[96px]"
+            width="96"
+            height="96"
+            viewBox="0 0 96 96"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M64 12.92C66.84 9.64 70.44 8 74.8 8C78.44 8 81.48 9.32 84 12C86.52 14.68 87.84 17.72 88 21.2C88 24 86.68 27.24 84 31.04C81.32 34.84 78.72 38 76.12 40.6C73.52 43.16 69.48 46.96 64 52C58.44 46.96 54.36 43.16 51.76 40.6C47.86 36.76 46.52 34.84 43.88 31.04C41.24 27.24 40 24 40 21.2C40 17.56 41.28 14.52 43.88 12C46.48 9.48 49.6 8.16 53.24 8C57.52 8 61.08 9.64 64 12.92ZM88 76V80L56 90L28 82.24V88H4V44H35.88L60.52 53.2C62.7156 54.0282 64.6072 55.505 65.9433 57.4342C67.2794 59.3633 67.9967 61.6534 68 64H76C82.64 64 88 69.36 88 76ZM20 80V52H12V80H20ZM79.6 74.28C78.96 72.96 77.56 72 76 72H54.6C52.44 72 50.32 71.68 48.28 71L38.76 67.84L41.28 60.24L50.8 63.4C52 63.8 60 64 60 64C60 62.52 59.08 61.2 57.72 60.68L34.44 52H28V74L55.88 81.64L79.6 74.28Z"
+              fill=""
+            />
+          </svg>
+          <h1 className="piedra-regular text-2xl sm:text-[3.25rem] 2xl:text-[4rem] text-main dark:text-yellow-600">
             Neighbourly
-        </h1>
+          </h1>
         </div>
         <div className="lg:px-6  sm:mt-0 sm:py-5 md:py-10 text-md sm:text-lg 2xl:text-xl  noto-sans-semibold">
-      <div className="grid grid-cols-2 gap-x-5 gap-y-6 sm:gap-x-12">
-        <a href="#">About Us</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Contact</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Q&amp;A</a>
-      </div>
+          <div className="grid grid-cols-2 gap-x-5 gap-y-6 sm:gap-x-12">
+            <a href="#">About Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Q&amp;A</a>
+          </div>
 
-      <div className="flex items-center gap-4 pt-8">
-        <span>Follow Us:</span>
-        <a href="#"><img src={fb} alt="" /></a>
-         <a href="#"><img src={tw} alt="" /></a>
-        <a href="#"><img src={tt} alt="" /></a>
-        <a href="#"><img src={inst} alt="" /></a>
+          <div className="flex items-center gap-4 pt-8">
+            <span>Follow Us:</span>
+            <a href="#">
+              <svg
+                className="fill-secondary-foreground dark:fill-secondary-foreground"
+                width="28"
+                height="33"
+                viewBox="0 0 28 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M11.9479 4.70841C13.3295 3.29462 15.2034 2.50024 17.1575 2.5H20.9468C21.226 2.5 21.4937 2.61346 21.6911 2.81542C21.8885 3.01739 21.9994 3.29131 21.9994 3.57692V8.74615C21.9994 9.03177 21.8885 9.30569 21.6911 9.50765C21.4937 9.70962 21.226 9.82308 20.9468 9.82308H17.1575C17.1298 9.82308 17.1025 9.82865 17.0769 9.83947C17.0514 9.8503 17.0282 9.86616 17.0086 9.88616C16.9891 9.90616 16.9736 9.92991 16.963 9.95604C16.9524 9.98217 16.947 10.0102 16.947 10.0385V12.8385H20.9468C21.1068 12.8384 21.2648 12.8756 21.4086 12.9473C21.5525 13.0191 21.6784 13.1234 21.7769 13.2525C21.8754 13.3815 21.9439 13.5318 21.9771 13.6919C22.0103 13.8521 22.0074 14.0179 21.9685 14.1767L20.7054 19.3459C20.6484 19.579 20.5169 19.7859 20.3318 19.9337C20.1467 20.0815 19.9185 20.1617 19.6837 20.1615H16.947V29.4231C16.947 29.7087 16.8361 29.9826 16.6387 30.1846C16.4413 30.3865 16.1735 30.5 15.8944 30.5H10.8419C10.5628 30.5 10.295 30.3865 10.0976 30.1846C9.90023 29.9826 9.78933 29.7087 9.78933 29.4231V20.1615H7.05259C6.77343 20.1615 6.5057 20.0481 6.3083 19.8461C6.1109 19.6442 6 19.3702 6 19.0846V13.9154C6 13.774 6.02723 13.6339 6.08012 13.5033C6.13302 13.3726 6.21055 13.2539 6.3083 13.1539C6.40604 13.0539 6.52208 12.9746 6.64978 12.9204C6.77749 12.8663 6.91436 12.8385 7.05259 12.8385H9.78933V10.0385C9.78957 8.03923 10.566 6.12196 11.9479 4.70841ZM17.1575 4.65385C15.7617 4.65385 14.423 5.22115 13.436 6.23096C12.449 7.24078 11.8945 8.61037 11.8945 10.0385V13.9154C11.8945 14.201 11.7836 14.4749 11.5862 14.6769C11.3888 14.8788 11.1211 14.9923 10.8419 14.9923H8.10519V18.0077H10.8419C11.1211 18.0077 11.3888 18.1212 11.5862 18.3231C11.7836 18.5251 11.8945 18.799 11.8945 19.0846V28.3462H14.8418V19.0846C14.8418 18.799 14.9527 18.5251 15.1501 18.3231C15.3475 18.1212 15.6152 18.0077 15.8944 18.0077H18.8613L19.5981 14.9923H15.8944C15.6152 14.9923 15.3475 14.8788 15.1501 14.6769C14.9527 14.4749 14.8418 14.201 14.8418 13.9154V10.0385C14.8418 9.4101 15.0858 8.80748 15.52 8.36316C15.9543 7.91885 16.5433 7.66923 17.1575 7.66923H19.8942V4.65385H17.1575Z"
+                  fill=""
+                />
+              </svg>
+            </a>
+            <a href="#">
+              <svg
+                className="fill-secondary-foreground dark:fill-secondary-foreground"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_133_251)">
+                  <mask
+                    id="mask0_133_251"
+                    maskUnits="userSpaceOnUse"
+                    x="0"
+                    y="0"
+                    width="24"
+                    height="25"
+                  >
+                    <path d="M0 0.5H24V24.5H0V0.5Z" fill="white" />
+                  </mask>
+                  <g mask="url(#mask0_133_251)">
+                    <path
+                      d="M18.9 1.62451H22.5806L14.5406 10.8371L24 23.3754H16.5943L10.7897 15.7725L4.15543 23.3754H0.471429L9.07029 13.5182L0 1.62623H7.59429L12.8331 8.57423L18.9 1.62451ZM17.6057 21.1674H19.6457L6.48 3.71765H4.29257L17.6057 21.1674Z"
+                      fill=""
+                    />
+                  </g>
+                </g>
+                <defs>
+                  <clipPath id="clip0_133_251">
+                    <rect
+                      width="24"
+                      height="24"
+                      fill="white"
+                      transform="translate(0 0.5)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </a>
+            <a href="#">
+              <svg
+                className="stroke-secondary-foreground dark:stroke-secondary-foreground"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_133_258)">
+                  <path
+                    d="M11 9.79585C9.59002 9.37548 8.08343 9.41007 6.69423 9.89471C5.30504 10.3794 4.10387 11.2894 3.26134 12.4956C2.41881 13.7018 1.97777 15.1428 2.00086 16.6139C2.02395 18.085 2.51 19.5115 3.38997 20.6906C4.26994 21.8698 5.49908 22.7417 6.9028 23.1825C8.30652 23.6233 9.81345 23.6106 11.2095 23.1462C12.6056 22.6818 13.8199 21.7893 14.6798 20.5954C15.5398 19.4016 16.0017 17.9672 16 16.4958V9.49585C17.3333 10.8292 19.3333 11.4958 22 11.4958V6.49585C19.3333 6.49585 17.3333 4.82918 16 1.49585H11V16.4958M11 16.4958C11 16.1003 10.8827 15.7136 10.6629 15.3847C10.4432 15.0558 10.1308 14.7995 9.76536 14.6481C9.39991 14.4967 8.99778 14.4571 8.60982 14.5343C8.22185 14.6114 7.86549 14.8019 7.58578 15.0816C7.30608 15.3613 7.1156 15.7177 7.03842 16.1057C6.96125 16.4936 7.00086 16.8958 7.15224 17.2612C7.30361 17.6267 7.55996 17.939 7.88886 18.1588C8.21775 18.3786 8.60443 18.4958 9 18.4958C9.53043 18.4958 10.0391 18.2851 10.4142 17.9101C10.7893 17.535 11 17.0263 11 16.4958Z"
+                    stroke=""
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_133_258">
+                    <rect
+                      width="24"
+                      height="24.0082"
+                      fill="white"
+                      transform="translate(0 0.49585)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </a>
+            <a href="#">
+              <svg
+                className="fill-secondary-foreground dark:fill-secondary-foreground"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.8 2.5H16.2C19.4 2.5 22 5.1 22 8.3V16.7C22 18.2383 21.3889 19.7135 20.3012 20.8012C19.2135 21.8889 17.7383 22.5 16.2 22.5H7.8C4.6 22.5 2 19.9 2 16.7V8.3C2 6.76174 2.61107 5.28649 3.69878 4.19878C4.78649 3.11107 6.26174 2.5 7.8 2.5ZM7.6 4.5C6.64522 4.5 5.72955 4.87928 5.05442 5.55442C4.37928 6.22955 4 7.14522 4 8.1V16.9C4 18.89 5.61 20.5 7.6 20.5H16.4C17.3548 20.5 18.2705 20.1207 18.9456 19.4456C19.6207 18.7705 20 17.8548 20 16.9V8.1C20 6.11 18.39 4.5 16.4 4.5H7.6ZM17.25 6C17.5815 6 17.8995 6.1317 18.1339 6.36612C18.3683 6.60054 18.5 6.91848 18.5 7.25C18.5 7.58152 18.3683 7.89946 18.1339 8.13388C17.8995 8.3683 17.5815 8.5 17.25 8.5C16.9185 8.5 16.6005 8.3683 16.3661 8.13388C16.1317 7.89946 16 7.58152 16 7.25C16 6.91848 16.1317 6.60054 16.3661 6.36612C16.6005 6.1317 16.9185 6 17.25 6ZM12 7.5C13.3261 7.5 14.5979 8.02678 15.5355 8.96447C16.4732 9.90215 17 11.1739 17 12.5C17 13.8261 16.4732 15.0979 15.5355 16.0355C14.5979 16.9732 13.3261 17.5 12 17.5C10.6739 17.5 9.40215 16.9732 8.46447 16.0355C7.52678 15.0979 7 13.8261 7 12.5C7 11.1739 7.52678 9.90215 8.46447 8.96447C9.40215 8.02678 10.6739 7.5 12 7.5ZM12 9.5C11.2044 9.5 10.4413 9.81607 9.87868 10.3787C9.31607 10.9413 9 11.7044 9 12.5C9 13.2956 9.31607 14.0587 9.87868 14.6213C10.4413 15.1839 11.2044 15.5 12 15.5C12.7956 15.5 13.5587 15.1839 14.1213 14.6213C14.6839 14.0587 15 13.2956 15 12.5C15 11.7044 14.6839 10.9413 14.1213 10.3787C13.5587 9.81607 12.7956 9.5 12 9.5Z"
+                  fill=""
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-        </div>
-        </div>
-    )
-}
-
-
+  );
+};
 
 export default Footer;
