@@ -6,6 +6,7 @@ import SingleEvent from './pages/singleEvent'
 import Events from './pages/Events'
 
 function App() {
+  
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
