@@ -1,5 +1,6 @@
 import hero from "@/assets/hero.png"
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 // import heroDark from "@/assets/hero dark.png"
 const Hero = () => {
 
@@ -9,7 +10,9 @@ const Hero = () => {
             <div className="flex flex-col w-full text-center items-center lg:items-start lg:text-start max-w-[570.05px] 2xl:max-w-[590px]">
                 <h1 className="noto-sans-semibold text-xl sm:text-2xl 2xl:text-3xl mb-6 sm:mb-8">Become a Volunteer With <span className="piedra-regular text-main dark:text-yellow-600 leading-[100%] sm:tracking-[2px] text-[46px] sm:text-[56px] 2xl:text-[64px]">Us</span></h1>
                 <p className="noto-sans-regular text-md sm:text-lg 2xl:text-xl">Discover meaningful volunteer opportunities and join a community that's changing the world</p>   
+               <Link to="/dashboard/products">
                 <Button className="mt-8 sm:mt-10 max-lg:h-[53px] max-lg:text-[24px] w-full max-w-[343px] lg:w-fit" variant={"default"}>Start Exploring</Button>     
+          </Link>
             </div>
         </div>
     )

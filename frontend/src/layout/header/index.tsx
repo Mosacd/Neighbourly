@@ -16,7 +16,7 @@ const Header = () => {
     const [selectedLang, setSelectedLang] = useState("ENG");
 
   return (
-  <div className="flex items-center w-full h-[80px] sm:h-[120px] 2xl:h-[140px] sm:py-[18px] 2xl:py-[22px] px-[24px] sm:px-[40px] xl:px-[80px] 2xl:px-[120px] shadow-bottom dark:shadow-neutral-800">
+  <div className="flex bg-background items-center w-full h-[80px] sm:h-[120px] 2xl:h-[140px] sm:py-[18px] 2xl:py-[22px] px-[24px] sm:px-[40px] xl:px-[80px] 2xl:px-[120px] shadow-bottom dark:shadow-neutral-800">
     <div className="flex items-center w-full justify-between">
         <Link to={'/Home'}>
         <div className="flex group gap-[8px] sm:gap-[24px] items-center">
