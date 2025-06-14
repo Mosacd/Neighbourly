@@ -4,7 +4,7 @@ const SearchBar = () => {
 
     return(
         <div className="relative group w-full sm:max-w-[648px] 2xl:max-w-[830px]">
-        <Input placeholder="search..." className="h-[32px] sm:h-[42px] 2xl:h-[53px] rounded-[8px] border-2 py-[10px] px-[24px] xs:pl-[52px] noto-sans-semibold border-[#696363] dark:focus:border-secondary-foreground dark:focus:text-secondary-foreground"/>
+        <Input placeholder="search..." className="h-[36px] sm:h-[42px] 2xl:h-[53px] rounded-[8px] border-2 py-[10px] px-[24px] xs:pl-[52px] noto-sans-semibold border-[#696363] dark:focus:border-secondary-foreground dark:focus:text-secondary-foreground"/>
     <svg
         className="absolute left-1 xs:left-4 top-1/2 -translate-y-1/2 w-[20px] h-[20px] xs:w-[24px] xs:h-[24px] 2xl:w-[32px] 2xl:h-[32px] fill-[#696363] group-focus-within:fill-black dark:group-focus-within:fill-secondary-foreground pointer-events-none"
         width="32"
