@@ -13,7 +13,6 @@ const Layout = () => {
       setLoading(false);
     };
 
-    // 1. Wait for all images
     const imagePromises = Array.from(document.images).map((img) => {
       if (img.complete) return Promise.resolve();
       return new Promise((resolve) => {
@@ -21,10 +20,8 @@ const Layout = () => {
       });
     });
 
-    // 2. Wait for fonts (using FontFaceSet API)
     const fontPromise = document.fonts.ready;
 
-    // Wait for all
     Promise.all([...imagePromises, fontPromise]).then(handleLoad);
   }, []);
 
