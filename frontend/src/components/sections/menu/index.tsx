@@ -24,7 +24,7 @@ const Menu = () => {
         </SheetTrigger>
         <SheetContent side="left" className="w-full dark:text-white">
           <SheetHeader className="mt-8 flex flex-col gap-4">
-            <SheetTitle className="text-center text-3xl border-b-2 border-black dark:border-white">
+            <SheetTitle className="text-center duration-300 text-3xl border-b-2 border-black dark:border-white">
               Menu
             </SheetTitle>
    
