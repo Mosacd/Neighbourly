@@ -122,7 +122,7 @@ const Filters = () => {
 <div className="flex items-center flex-col gap-5 justify-between mb-[44px]">
         <h1 className="noto-sans-semibold text-3xl lg:text-2xl 2xl:text-3xl w-full text-center">Filters</h1>
         <div className="border-y-2 w-full flex items-center justify-center">
-      <Button onClick={clearAllFilters} variant={"ghost"} className="text-red-800 text-xl lg:text-lg 2xl:text-xl 2xl:text-[24px] hover:text-red-700 hover:bg-transparent h-fit w-fit">Clear All</Button>
+      <Button onClick={clearAllFilters} variant={"ghost"} className="text-red-800 text-xl lg:text-lg 2xl:text-xl 2xl:text-[24px] hover:text-red-700 hover:bg-transparent dark:hover:bg-transparent h-fit w-fit">Clear All</Button>
       </div>
       </div>
       <div className="flex justify-center">

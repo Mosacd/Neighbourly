@@ -1,0 +1,90 @@
+.loader {
+  --ANIMATION-DELAY-MULTIPLIER: 70ms;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.loader span {
+  padding: 0;
+  margin: 0 0.2rem; /* Increased margin for better spacing with larger font */
+  animation-delay: 0s;
+  transform: translateY(6rem); /* Increased distance for more dramatic effect */
+  animation: hideAndSeek 1s alternate infinite cubic-bezier(0.86, 0, 0.07, 1);
+  font-family: "Piedra", serif;
+  font-weight: 400;
+  font-style: normal;
+  display: inline-block;
+  font-size: 5rem; /* Increased from 3rem to 5rem */
+}
+
+.loader .l {
+  animation-delay: calc(var(--ANIMATION-DELAY-MULTIPLIER) * 0);
+}
+
+.loader .o {
+  animation-delay: calc(var(--ANIMATION-DELAY-MULTIPLIER) * 1);
+}
+
+.loader .a {
+  animation-delay: calc(var(--ANIMATION-DELAY-MULTIPLIER) * 2);
+}
+
+.loader .d {
+  animation-delay: calc(var(--ANIMATION-DELAY-MULTIPLIER) * 3);
+}
+
+.loader .i { /* Fixed: changed from .ispan to .i */
+  animation-delay: calc(var(--ANIMATION-DELAY-MULTIPLIER) * 4);
+  margin-inline: 8px; /* Increased margin for better spacing with larger font */
+}
+
+.loader .n {
+  animation-delay: calc(var(--ANIMATION-DELAY-MULTIPLIER) * 5);
+}
+
+.loader .g {
+  animation-delay: calc(var(--ANIMATION-DELAY-MULTIPLIER) * 6);
+}
+
+
+.loader .svg {
+      animation-delay: calc(var(--ANIMATION-DELAY-MULTIPLIER) * 7);
+}
+
+
+.letter {
+  width: fit-content;
+  height: 5rem; /* Increased from 3rem to match font size */
+}
+
+@keyframes hideAndSeek {
+  0% {
+    transform: translateY(6rem); /* Increased from 4rem to 6rem */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}
+
+/* SVG Animations - Converting hover effects to continuous animations */
+.animatedSvg {
+  animation: svgTransform 2s ease-in-out infinite;
+}
+
+
+
+@keyframes svgTransform {
+   100% {
+    transform: rotate(-5deg);
+  }
+  0% {
+    transform: rotate(5deg);
+  }
+}

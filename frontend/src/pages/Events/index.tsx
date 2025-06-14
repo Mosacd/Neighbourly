@@ -20,7 +20,7 @@ const Events = () => {
   return (
     <div className="mt-[100px] sm:mt-[144px] flex justify-between gap-20 px-[16px] sm:px-[40px]">
      {isDesktop && (
-        <div className="max-w-[334px] h-fit 2xl:max-w-[400px] w-full border-2 rounded-md p-5 shrink-2">
+        <div className="max-w-[334px] shadow-md h-fit 2xl:max-w-[400px] w-full border-2 rounded-md p-5 shrink-2">
           <Filters />
         </div>
       )}
