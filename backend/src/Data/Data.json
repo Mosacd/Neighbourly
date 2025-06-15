@@ -1,101 +1,40 @@
-[
+      [
   {
     "id": "1",
-    "title": "Beach Cleanup Day",
-    "description": "Help remove trash and debris from local beaches to protect marine life. Gloves and bags provided.",
-    "startdate": "2024-07-20T09:00:00",
-    "enddate": "2024-07-20T12:00:00",
-    "schedule": "Saturday, 9 AM - 12 PM",
-    "location": "Sunset Beach Park",
-    "tags": "environment, outdoors",
-    "organization": "Ocean Guardians"
+    "title": "Library Reading Buddy Program",
+    "Briefdescription": "Help children improve their reading skills in a fun, supportive library environment. Perfect for those who love working with kids and promoting literacy.",
+    "description": "Join our Library Reading Buddy Program and make a lasting impact on children's literacy development in your community. As a reading buddy, you'll work one-on-one with children aged 6-12, helping them develop essential reading skills while fostering a love for books and learning. This program pairs volunteers with young readers who need extra support and encouragement to build their confidence and reading abilities. You'll engage in interactive reading sessions, play educational games, and participate in creative storytelling activities that make learning fun and memorable. Our structured program provides training materials and ongoing support to ensure you feel confident and prepared. Whether you're a retired teacher, college student, or simply someone passionate about education, this opportunity allows you to directly contribute to a child's academic success. The program runs throughout the school year, offering flexible scheduling to accommodate your availability. Many volunteers find this experience incredibly rewarding as they witness children's progress and growing enthusiasm for reading. You'll be part of a dedicated team of volunteers who believe in the power of literacy to transform lives and strengthen communities.",
+    "startdate": "2025-07-01T00:00:00.000Z",
+    "enddate": "2025-08-15T00:00:00.000Z",
+    "schedule": "Weekdays, 3:00 PM – 5:00 PM",
+    "location": "Downtown Public Library",
+    "tags": "reading,kids,education",
+    "organization": "City Library",
+    "image": "/images/library-reading.jpg"
   },
   {
     "id": "2",
-    "title": "Food Bank Sorting",
-    "description": "Sort and pack donated food items for distribution to families in need.",
-    "startdate": "2024-07-22T13:00:00",
-    "schedule": "Every Monday, 1 PM - 4 PM",
-    "location": "Community Food Bank, 123 Main St",
-    "tags": "hunger relief, community"
+    "title": "Park Cleanup Crew",
+    "Briefdescription": "Join a community initiative to keep our parks clean and beautiful. Great opportunity for outdoor enthusiasts and team-building activities.",
+    "description": "Be part of our monthly Park Cleanup Crew and help maintain the natural beauty of our community's green spaces. This hands-on volunteer opportunity brings together environmentally conscious individuals who want to make a tangible difference in their neighborhood. During each cleanup event, volunteers work together to remove litter, clear invasive plant species, maintain walking trails, and plant native flowers and shrubs. Our experienced crew leaders provide all necessary tools, safety equipment, and guidance to ensure a productive and safe experience for volunteers of all ages and skill levels. Beyond the environmental benefits, these cleanup events foster community connections and pride in our shared spaces. Volunteers often form lasting friendships while working toward a common goal of environmental stewardship. The program welcomes families, corporate groups, student organizations, and individual volunteers looking to give back to their community. Each cleanup session typically focuses on different areas of the park system, allowing volunteers to explore various locations and understand the diverse ecosystems within our city. Weather-appropriate clothing and a positive attitude are all you need to bring – we'll provide the rest. Join us in creating cleaner, safer, and more beautiful parks for everyone to enjoy while building a stronger, more connected community.",
+    "startdate": "2025-07-10T00:00:00.000Z",
+    "schedule": "Saturday, 9:00 AM – 12:00 PM",
+    "location": "Riverside Park",
+    "tags": "environment,cleanup,community",
+    "organization": "Green City Volunteers",
+    "image": "/images/park-cleanup.jpg"
   },
   {
     "id": "3",
-    "title": "Animal Shelter Help",
-    "description": "Assist with feeding, cleaning, and socializing rescued dogs and cats.",
-    "startdate": "2024-07-25T10:00:00",
-    "enddate": "2024-07-25T14:00:00",
-    "schedule": "Thursday, 10 AM - 2 PM",
-    "location": "Paws & Claws Shelter",
-    "tags": "animals, caregiving",
-    "organization": "Paws & Claws"
-  },
-  {
-    "id": "4",
-    "title": "Tutoring Kids",
-    "description": "Provide one-on-one tutoring in math and reading for elementary students.",
-    "startdate": "2024-08-01T15:00:00",
-    "schedule": "Weekdays after school",
-    "location": "Sunrise Elementary School",
-    "tags": "education, youth"
-  },
-  {
-    "id": "5",
-    "title": "Park Tree Planting",
-    "description": "Plant native trees to restore urban green spaces. No experience needed!",
-    "startdate": "2024-08-05T08:00:00",
-    "enddate": "2024-08-05T11:00:00",
-    "schedule": "Monday, 8 AM - 11 AM",
-    "location": "Riverside Park",
-    "tags": "environment, outdoors"
-  },
-  {
-    "id": "6",
-    "title": "Senior Center Bingo Night",
-    "description": "Host a fun bingo night for seniors at the local community center.",
-    "startdate": "2024-08-10T18:00:00",
-    "schedule": "Monthly on the 2nd Friday",
-    "location": "Golden Years Senior Center",
-    "tags": "elderly, recreation"
-  },
-  {
-    "id": "7",
-    "title": "Disaster Relief Training",
-    "description": "Learn basic disaster response skills and join our volunteer network.",
-    "startdate": "2024-08-15T09:00:00",
-    "enddate": "2024-08-15T16:00:00",
-    "schedule": "One-day workshop",
-    "location": "Red Cross Chapter, 456 Oak Ave",
-    "tags": "emergency, training",
-    "organization": "Red Cross"
-  },
-  {
-    "id": "8",
-    "title": "Library Storytime Volunteer",
-    "description": "Read books and lead activities for preschoolers during weekly storytime.",
-    "startdate": "2024-08-20T10:30:00",
-    "schedule": "Tuesdays, 10:30 AM - 11:30 AM",
-    "location": "Downtown Public Library",
-    "tags": "education, youth"
-  },
-  {
-    "id": "9",
-    "title": "Homeless Shelter Dinner Service",
-    "description": "Prepare and serve meals to homeless individuals at the shelter.",
-    "startdate": "2024-08-25T17:00:00",
-    "enddate": "2024-08-25T20:00:00",
-    "schedule": "Last Sunday of each month",
-    "location": "Hope Haven Shelter",
-    "tags": "hunger relief, community"
-  },
-  {
-    "id": "10",
-    "title": "Tech Workshop for Seniors",
-    "description": "Teach seniors how to use smartphones, email, and social media.",
-    "startdate": "2024-09-05T13:00:00",
-    "schedule": "Monthly, 1 PM - 3 PM",
-    "location": "Community Tech Hub",
-    "tags": "education, elderly",
-    "organization": "Tech4Good"
+    "title": "Community Food Drive",
+    "Briefdescription": "Help collect and organize food donations for families in need across the city. Make a real difference in fighting local hunger today.",
+    "description": "Join our Community Food Drive initiative and play a crucial role in addressing food insecurity in our city. This comprehensive volunteer program operates year-round, with intensified efforts during holiday seasons and times of particular need. Volunteers participate in various activities including organizing food collection events at local businesses, schools, and community centers, sorting and packaging donated items at our distribution centers, and helping with direct food distribution to families in need. Our program serves hundreds of families monthly, providing essential groceries, fresh produce, and household necessities to those facing economic hardships. Volunteers gain valuable experience in logistics, community outreach, and nonprofit operations while making meaningful connections with fellow volunteers and community members. We welcome individuals, families, corporate groups, and student organizations looking for impactful volunteer opportunities. Training is provided for all activities, and our friendly coordinators ensure volunteers feel comfortable and confident in their roles. Whether you can commit to weekly shifts or occasional weekend events, your contribution makes a significant difference in reducing hunger and building food security in our community. The program also focuses on education, teaching volunteers and recipients about nutrition, meal planning, and resource management. Many volunteers find this experience eye-opening and deeply rewarding as they witness the direct impact of their efforts on families' daily lives and long-term stability.",
+    "startdate": "2025-08-01T00:00:00.000Z",
+    "enddate": "2025-08-31T00:00:00.000Z",
+    "schedule": "Flexible shifts",
+    "location": "Citywide Donation Centers",
+    "tags": "food,donation,community",
+    "organization": "Helping Hands Network",
+    "image": "/images/food-drive.jpg"
   }
 ]
