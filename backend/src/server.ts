@@ -1,5 +1,3 @@
-// src/server.ts
-
 import express, { Request, Response } from 'express';
 import path from 'path';
 import fs from 'fs';
@@ -26,6 +24,7 @@ app.get('/', (req, res) => {
     <p>Access a specific opportunity by ID, e.g., <a href="/api/Data/1">/api/Data/1</a></p>
   `);
 });
+
 
 // --- NEW ENDPOINT to get a single opportunity by ID ---
 app.get('/api/Data/:id', (req: Request, res: Response) => {
@@ -54,7 +53,7 @@ app.get('/api/Data/:id', (req: Request, res: Response) => {
 app.get('/api/Data', (req: Request, res: Response) => {
   try {
     let opportunities = loadOpportunities();
-
+    
     // Search Functionality
     const { search } = req.query;
     if (typeof search === 'string' && search.trim() !== '') {
@@ -83,10 +82,12 @@ app.get('/api/Data', (req: Request, res: Response) => {
     }
 
     // Sorting Functionality
+
     const { sortBy, sortOrder } = req.query;
     if (typeof sortBy === 'string') {
       opportunities.sort((a, b) => {
         const key = sortBy as keyof VolunteerOpportunity;
+
         // Provide default empty string for optional fields to avoid errors
         const valA = a[key] ?? '';
         const valB = b[key] ?? '';
