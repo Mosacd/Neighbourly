@@ -19,14 +19,14 @@ import EnhancedLoader from "@/components/ui/custom-loader";
 const Events = () => {
 
   const [events, setEvents] = useState<VolunteerOpportunity[] | null>(null);
-  const [Loader, setLoader] = useState(true);
+  const [Loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
         const data = await fetchItems();
         setEvents(data);
-          setLoader(false);
+          setLoading(false);
       } catch (err) {
         console.error("Failed to load events:", err);
       }
@@ -37,14 +37,8 @@ const Events = () => {
 
    const isDesktop = useMediaQuery("(min-width: 1024px)");
 
-   
-    if(Loader){
-      return <EnhancedLoader/>
-    }
 
-     if(!events){
-     return <div>currently no events are hosted</div>
-     }
+
   
   return (
     <div className="mt-[100px] sm:mt-[144px] flex justify-between gap-20 px-[16px] sm:px-[40px]">
@@ -74,14 +68,25 @@ const Events = () => {
            {!isDesktop && <FiltersMobile />}
           </div>
         </div>
-        <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-1  items-center gap-x-[10px] gap-y-[24px] sm:gap-[20px] md:gap-[24px]">
-          {events ? events.map((data) => {
-            return <CardForEventList data={data} />;
-          }) : <div>currently no events are hosted</div>}
-        </div>
+       <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-1 relative items-center gap-x-[10px] gap-y-[24px] sm:gap-[20px] md:gap-[24px] min-h-[200px]">
+  {Loading ? (
+    <div className="absolute left-1/2 transform -translate-x-1/2 lg:top-1">
+      <EnhancedLoader/>
+    </div>
+  ) : (events && events.length > 0 ? events.map((data) => {
+    return <CardForEventList data={data} />;
+  }) : (
+    <div className="col-span-full flex items-center justify-center h-full">
+      currently no events are hosted
+    </div>
+  ))}
+</div>
       </div>
     </div>
   );
 };
+
+   
+  
 
 export default Events;
