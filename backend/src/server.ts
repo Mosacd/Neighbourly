@@ -23,6 +23,7 @@ app.get('/api/Data', (req: Request, res: Response) => {
     const rawData = fs.readFileSync(dataPath, 'utf-8');
     let opportunities: VolunteerOpportunity[] = JSON.parse(rawData);
 
+    // Search Functionality
     const { search } = req.query;
     if (typeof search === 'string' && search.trim() !== '') {
       const searchTerm = search.toLowerCase();
@@ -32,6 +33,21 @@ app.get('/api/Data', (req: Request, res: Response) => {
         opp.description.toLowerCase().includes(searchTerm) ||
         opp.tags.toLowerCase().includes(searchTerm)
       );
+    }
+
+
+    // Sorting Functionality 
+    const { sortBy, sortOrder } = req.query;
+    if (typeof sortBy === 'string') {
+      opportunities.sort((a, b) => {
+        const key = sortBy as keyof VolunteerOpportunity;
+        const valA = a[key] ?? '';
+        const valB = b[key] ?? '';
+
+        if (valA < valB) return sortOrder === 'desc' ? 1 : -1;
+        if (valA > valB) return sortOrder === 'desc' ? -1 : 1;
+        return 0;
+      });
     }
 
     res.status(200).json(opportunities);
