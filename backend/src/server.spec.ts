@@ -43,3 +43,19 @@ describe('Test for Sorting Functionality', () => {
   });
 });
 
+describe('Test for Filtering Functionality', () => {
+  it('should filter opportunities by a single tag', async () => {
+    const response = await request(app).get('/api/Data?tags=education');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(1);
+    expect(response.body[0].id).toBe('1');
+  });
+
+  it('should filter opportunities by location', async () => {
+    const response = await request(app).get('/api/Data?location=Riverside Park');
+    expect(response.status).toBe(200);
+    expect(response.body.length).toBe(1);
+    expect(response.body[0].id).toBe('2');
+  });
+});
+
