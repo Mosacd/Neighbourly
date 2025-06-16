@@ -4,7 +4,7 @@
   "description": "Backend for Volunteer Opportunities Lister",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && xcopy src\\data dist\\data /E /I /Y",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "postinstall": "npm run build"
