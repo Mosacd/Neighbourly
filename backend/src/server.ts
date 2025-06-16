@@ -36,7 +36,23 @@ app.get('/api/Data', (req: Request, res: Response) => {
     }
 
 
-    // Sorting Functionality 
+    // Filtering Functionality
+    const { location, tags } = req.query;
+    if (typeof location === 'string' && location.trim() !== '') {
+      const filterLocation = location.toLowerCase();
+      opportunities = opportunities.filter(opp =>
+        opp.location.toLowerCase().includes(filterLocation)
+      );
+    }
+    if (typeof tags === 'string' && tags.trim() !== '') {
+        const filterTags = tags.toLowerCase().split(',').map(tag => tag.trim());
+        opportunities = opportunities.filter(opp => 
+            filterTags.every(filterTag => opp.tags.toLowerCase().split(',').includes(filterTag))
+        );
+    }
+
+
+    // Implement Sorting Functionality 
     const { sortBy, sortOrder } = req.query;
     if (typeof sortBy === 'string') {
       opportunities.sort((a, b) => {
