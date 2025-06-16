@@ -26,3 +26,20 @@ describe('Test for Search Functionality', () => {
     expect(response.body.length).toBe(0);
   });
 });
+
+describe('Test for Sorting Functionality', () => {
+  it('should sort opportunities by title in ascending order', async () => {
+    const response = await request(app).get('/api/Data?sortBy=title&sortOrder=asc');
+    expect(response.status).toBe(200);
+    const titles = response.body.map((opp: { title: string }) => opp.title);
+    expect(titles).toEqual(['Community Food Drive', 'Library Reading Buddy Program', 'Park Cleanup Crew']);
+  });
+
+  it('should sort opportunities by startdate in descending order', async () => {
+    const response = await request(app).get('/api/Data?sortBy=startdate&sortOrder=desc');
+    expect(response.status).toBe(200);
+    const ids = response.body.map((opp: { id: string }) => opp.id);
+    expect(ids).toEqual(['3', '2', '1']);
+  });
+});
+
