@@ -204,7 +204,7 @@ function CarouselPrevious({
     >
      {/* <img src={ArrLeft} alt="" /> */}
      <svg className="fill-black dark:fill-yellow-600" width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0.457332 9.94802L8 17.4907L9.88533 15.6054L3.28533 9.00535L9.88533 2.40535L8 0.52002L0.457332 8.06269C0.207371 8.31272 0.0669498 8.6518 0.0669498 9.00535C0.0669498 9.35891 0.207371 9.69798 0.457332 9.94802Z" fill=""/>
+<path fillRule="evenodd" clipRule="evenodd" d="M0.457332 9.94802L8 17.4907L9.88533 15.6054L3.28533 9.00535L9.88533 2.40535L8 0.52002L0.457332 8.06269C0.207371 8.31272 0.0669498 8.6518 0.0669498 9.00535C0.0669498 9.35891 0.207371 9.69798 0.457332 9.94802Z"/>
 </svg>
 
       <span className="sr-only">Previous slide</span>
@@ -238,7 +238,7 @@ function CarouselPrevious2({
     >
      {/* <img src={ArrLeft} alt="" /> */}
         <svg className="fill-black dark:fill-secondary-foreground" width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0.457332 9.94802L8 17.4907L9.88533 15.6054L3.28533 9.00535L9.88533 2.40535L8 0.52002L0.457332 8.06269C0.207371 8.31272 0.0669498 8.6518 0.0669498 9.00535C0.0669498 9.35891 0.207371 9.69798 0.457332 9.94802Z" fill=""/>
+<path fillRule="evenodd" clipRule="evenodd" d="M0.457332 9.94802L8 17.4907L9.88533 15.6054L3.28533 9.00535L9.88533 2.40535L8 0.52002L0.457332 8.06269C0.207371 8.31272 0.0669498 8.6518 0.0669498 9.00535C0.0669498 9.35891 0.207371 9.69798 0.457332 9.94802Z"/>
 </svg>
 
       <span className="sr-only">Previous slide</span>
@@ -272,7 +272,7 @@ function CarouselNext({
     >
        {/* <img src={RightArr} alt="" /> */}
        <svg className="fill-black dark:fill-yellow-600" width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M9.54267 9.94802L2 17.4907L0.11467 15.6054L6.71467 9.00535L0.11467 2.40535L2 0.52002L9.54267 8.06269C9.79263 8.31272 9.93305 8.6518 9.93305 9.00535C9.93305 9.35891 9.79263 9.69798 9.54267 9.94802Z" fill=""/>
+<path fillRule="evenodd" clipRule="evenodd" d="M9.54267 9.94802L2 17.4907L0.11467 15.6054L6.71467 9.00535L0.11467 2.40535L2 0.52002L9.54267 8.06269C9.79263 8.31272 9.93305 8.6518 9.93305 9.00535C9.93305 9.35891 9.79263 9.69798 9.54267 9.94802Z"/>
 </svg>
 
       <span className="sr-only">Next slide</span>
@@ -306,7 +306,7 @@ function CarouselNext2({
     >
        {/* <img  src={RightArr} alt="" /> */}
             <svg className="fill-black dark:fill-secondary-foreground" width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M9.54267 9.94802L2 17.4907L0.11467 15.6054L6.71467 9.00535L0.11467 2.40535L2 0.52002L9.54267 8.06269C9.79263 8.31272 9.93305 8.6518 9.93305 9.00535C9.93305 9.35891 9.79263 9.69798 9.54267 9.94802Z" fill=""/>
+<path fillRule="evenodd" clipRule="evenodd" d="M9.54267 9.94802L2 17.4907L0.11467 15.6054L6.71467 9.00535L0.11467 2.40535L2 0.52002L9.54267 8.06269C9.79263 8.31272 9.93305 8.6518 9.93305 9.00535C9.93305 9.35891 9.79263 9.69798 9.54267 9.94802Z"/>
 </svg>
       <span className="sr-only">Next slide</span>
     </Button>

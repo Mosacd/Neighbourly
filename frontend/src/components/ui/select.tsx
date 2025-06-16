@@ -71,7 +71,7 @@ function SelectTriggerForSort({
       {children}
       <SelectPrimitive.Icon asChild className="w-[24px] h-[24px] 2xl:w-[32px] 2xl:h-[32px] p-[5px] bg-transparent border-black dark:border-secondary-foreground rounded-full border-[2px]">
        <svg className="size-1 fill-black dark:fill-secondary-foreground" width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M7.55198 10.0427L0.00931168 2.50008L1.89464 0.614746L8.49465 7.21475L15.0946 0.614746L16.98 2.50008L9.43731 10.0427C9.18728 10.2927 8.8482 10.4331 8.49465 10.4331C8.14109 10.4331 7.80202 10.2927 7.55198 10.0427Z" fill=""/>
+<path fillRule="evenodd" clipRule="evenodd" d="M7.55198 10.0427L0.00931168 2.50008L1.89464 0.614746L8.49465 7.21475L15.0946 0.614746L16.98 2.50008L9.43731 10.0427C9.18728 10.2927 8.8482 10.4331 8.49465 10.4331C8.14109 10.4331 7.80202 10.2927 7.55198 10.0427Z"/>
 </svg>
 
       </SelectPrimitive.Icon>
