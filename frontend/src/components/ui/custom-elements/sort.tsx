@@ -17,13 +17,11 @@ const handleSort = (value: string) => {
 })
 };
 
-
-
     return(
           <Select value={sort} onValueChange={handleSort} defaultValue="Newest">  
             <SelectTriggerForSort className="w-full min-w-[110px] lg:min-w-[130px] max-w-[120px] px-0 2xl:max-w-[240px] data-[size=default]:h-[53px] text-md sm:text-lg 2xl:text-xl border-none noto-sans-semibold">
               <SelectValue>Sort By</SelectValue>
-            </SelectTriggerForSort> 
+            </SelectTriggerForSort>
             <SelectContent  position="popper"
                 sideOffset={5}
                 align="center" className="min-w-[116px] max-xs:max-w-[120px] ">

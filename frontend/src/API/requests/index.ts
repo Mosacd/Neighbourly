@@ -1,21 +1,23 @@
 import { httpClient } from "..";
 
 export const fetchItems = async (searchParams: URLSearchParams) => {
-  const filters = getFilters(searchParams);
+  const urlParams = getUrlParams(searchParams);
 
   const response = await httpClient.get("/api/Data", {
-    params: filters,
+    params: urlParams,
   });
 
   return response.data;
 };
 
-const getFilters = (searchParams: URLSearchParams) => {
+const getUrlParams = (searchParams: URLSearchParams) => {
   return {
     locations: searchParams.getAll("location") ?? [],
     timeCommitments: searchParams.getAll("timeCommitment") ?? [],
     ageRequirements: searchParams.getAll("ageRequirement") ?? [],
     Dates: searchParams.getAll("date") ?? [],
+    search: searchParams.get("search") ?? null,
+    sort: searchParams.get("sort") ?? "Newest"
   };
 };
 

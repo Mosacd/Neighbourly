@@ -1,4 +1,5 @@
 import image from "@/assets/carusel img.png"
+
 export interface VolunteerOpportunity {
   id: string;
   title: string;
@@ -10,7 +11,6 @@ export interface VolunteerOpportunity {
   location: string;
   timeCommitment: string;
   ageRequirement: string;
-  tags: string;
   organization?: string;
   image: string;
 }
