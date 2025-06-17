@@ -62,6 +62,37 @@
   height: 5rem; /* Increased from 3rem to match font size */
 }
 
+
+@media (max-width: 640px) {
+  .letter {
+    height: 1rem;
+  }
+
+  .loader span {
+    font-size: 1rem
+  }
+}
+
+@media (max-width: 768px) {
+  .letter {
+    height: 2rem;
+  }
+
+  .loader span {
+    font-size: 2rem
+  }
+}
+
+@media (max-width: 1024px) {
+  .letter {
+    height: 3rem;
+  }
+
+  .loader span {
+    font-size: 3rem
+  }
+}
+
 @keyframes hideAndSeek {
   0% {
     transform: translateY(6rem); /* Increased from 4rem to 6rem */

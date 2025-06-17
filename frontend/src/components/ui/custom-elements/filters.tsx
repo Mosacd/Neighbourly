@@ -31,23 +31,38 @@ const dates = [
   { label: "This Month", value: "This Month" },
 ];
 
+type Selections = {
+  locations : string[],
+  timeCommitments: string[],
+  ageRequirements: string[],
+  Dates: string[]
+}
 
 const Filters = () => {
     
   const [searchParams, setSearchParams] = useSearchParams();
-      const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
-  const [selectedTimeCommitments, setSelectedTimeCommitments] = useState<string[]>([]);
-  const [selectedAgeRequirements, setSelectedAgeRequirements] = useState<string[]>([]);
-    const [selectedDates, setSelectedDates] = useState<string[]>([]);
+
+  const [selections, setSelections] = useState<Selections>({
+      locations: [],
+      timeCommitments: [],
+      ageRequirements: [],
+      Dates: []
+    })
+
   const [hasInitialized, setHasInitialized] = useState(false);
   
-  const toggleItem = (value: string, list: string[], setList: (val: string[]) => void) => {
-      if (list.includes(value)) {
-        setList(list.filter((v) => v !== value));
+  type SelectionKey = keyof Selections;
+
+  const toggleItem = (value: string, key: SelectionKey) => {
+    setSelections((prev) => {
+      const currentList = prev[key];
+      if (currentList.includes(value)) {
+        return { ...prev, [key]: currentList.filter((v) => v !== value) };
       } else {
-        setList([...list, value]);
+        return { ...prev, [key]: [...currentList, value] };
       }
-    };
+    });
+  };
   
      // Sync with URL on change
     useEffect(() => {
@@ -60,15 +75,15 @@ const Filters = () => {
         newParams.delete("ageRequirement");
         newParams.delete("date");
   
-  
-           selectedLocations.forEach((l) => newParams.append("location", l));
-      selectedTimeCommitments.forEach((c) => newParams.append("timeCommitment", c));
-      selectedAgeRequirements.forEach((r) => newParams.append("ageRequirement", r));
-      selectedDates.forEach((d) => newParams.append("date", d));
+            
+           selections.locations.forEach((l) => newParams.append("location", l));
+      selections.timeCommitments.forEach((c) => newParams.append("timeCommitment", c));
+      selections.ageRequirements.forEach((r) => newParams.append("ageRequirement", r));
+      selections.Dates.forEach((d) => newParams.append("date", d));
         return newParams;
       });
   
-    }, [selectedLocations, selectedTimeCommitments, selectedAgeRequirements, selectedDates, hasInitialized]);
+    }, [selections, hasInitialized]);
   
     
     useEffect(() => {
@@ -77,42 +92,25 @@ const Filters = () => {
     const RequirementParam = searchParams.getAll("ageRequirement");
     const dateParam = searchParams.getAll("date");
   
-      setSelectedLocations(
-        locations.filter((l) =>
-          locationParam.includes(l.value)).map((l) => l.value)
-      );
-  
+      setSelections({
+        locations: locations.filter((l) => locationParam.includes(l.value)).map((l) => l.value),
+        timeCommitments: timeCommitments.filter((t) => timeCommitmentParam.includes(t.value)).map((t) => t.value),
+        ageRequirements: ageRequirements.filter((a) => RequirementParam.includes(a.value)).map((a) => a.value),
+        Dates: dates.filter((d) => dateParam.includes(d.value)).map((d) => d.value),
+      });
       
-  
-    
-      setSelectedTimeCommitments(
-        timeCommitments.filter((t) =>
-          timeCommitmentParam.includes(t.value)
-        ).map((t) => t.value)
-      );
-    
-      setSelectedAgeRequirements(
-        ageRequirements.filter((a) =>
-          RequirementParam.includes(a.value)
-        ).map((a) => a.value)
-      );
-  
-      setSelectedDates(
-        dates.filter((d) =>
-          dateParam.includes(d.value)
-        ).map((d) => d.value)
-      )
-  
       setHasInitialized(true);
     }, []);
   
   
   
     const clearAllFilters = () => {
-    setSelectedLocations([]);
-    setSelectedTimeCommitments([]);
-    setSelectedAgeRequirements([]);
-    setSelectedDates([]);
+    setSelections({
+      locations: [],
+      timeCommitments: [],
+      ageRequirements: [],
+      Dates: []
+    });
     setSearchParams(new URLSearchParams());
   };
   
@@ -132,8 +130,8 @@ const Filters = () => {
      
         {locations.map(({label, value}, i)=> {
           return(<div key={value} className="flex items-center *:hover:cursor-pointer gap-[12px] 2xl:gap-[16px]">
-              <Checkbox checked={selectedLocations.includes(value)}
-                onCheckedChange={() => toggleItem(value, selectedLocations, setSelectedLocations)}
+              <Checkbox checked={selections.locations.includes(value)}
+                onCheckedChange={() => toggleItem(value, "locations")}
                 id={`location-${i}`}
               />
           <label htmlFor={`location-${i}`} className="text-xl lg:text-lg 2xl:text-xl noto-sans-regular w-full">
@@ -149,8 +147,8 @@ const Filters = () => {
      
         {timeCommitments.map(({label, value}, i)=> {
           return(<div key={value} className="flex items-center *:hover:cursor-pointer gap-[12px] 2xl:gap-[16px]">
-              <Checkbox checked={selectedTimeCommitments.includes(value)}
-                onCheckedChange={() => toggleItem(value, selectedTimeCommitments, setSelectedTimeCommitments)}
+              <Checkbox checked={selections.timeCommitments.includes(value)}
+                onCheckedChange={() => toggleItem(value, "timeCommitments")}
                 id={`timeCommitment-${i}`}
               />
           <label htmlFor={`timeCommitment-${i}`} className="text-xl lg:text-lg 2xl:text-xl noto-sans-regular w-full">
@@ -166,8 +164,8 @@ const Filters = () => {
      
         {ageRequirements.map(({label, value}, i)=> {
           return(<div key={value} className="flex items-center *:hover:cursor-pointer gap-[12px] 2xl:gap-[16px]">
-              <Checkbox checked={selectedAgeRequirements.includes(value)}
-                onCheckedChange={() => toggleItem(value, selectedAgeRequirements, setSelectedAgeRequirements)}
+              <Checkbox checked={selections.ageRequirements.includes(value)}
+                onCheckedChange={() => toggleItem(value, "ageRequirements")}
                 id={`ageRequirement-${i}`}
               />
           <label htmlFor={`ageRequirement-${i}`} className="text-xl lg:text-lg 2xl:text-xl noto-sans-regular w-full">
@@ -183,8 +181,8 @@ const Filters = () => {
      
         {dates.map(({label, value}, i)=> {
           return(<div key={value} className="flex items-center *:hover:cursor-pointer gap-[12px] 2xl:gap-[16px]">
-              <Checkbox checked={selectedDates.includes(value)}
-                onCheckedChange={() => toggleItem(value, selectedDates, setSelectedDates)}
+              <Checkbox checked={selections.Dates.includes(value)}
+                onCheckedChange={() => toggleItem(value, "Dates")}
                 id={`date-${i}`}
               />
           <label htmlFor={`date-${i}`} className="text-xl lg:text-lg 2xl:text-xl noto-sans-regular w-full">
