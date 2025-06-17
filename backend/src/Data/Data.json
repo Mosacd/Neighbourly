@@ -11,7 +11,7 @@
     "timeCommitment": "Weekly commitment",
     "ageRequirement": "16+",
     "organization": "City Library",
-    "image": "/images/library-reading.jpg"
+    "image": "../public/images/library-reading.jpg"
   },
   {
     "id": "2",
@@ -25,7 +25,7 @@
     "timeCommitment": "Half-day",
     "ageRequirement": "13+",
     "organization": "Green City Volunteers",
-    "image": "/images/park-cleanup.jpg"
+    "image": "../public/images/park-cleanup.jpg"
   },
   {
     "id": "3",
@@ -39,7 +39,7 @@
     "timeCommitment": "1–2 hours",
     "ageRequirement": "18+",
     "organization": "Helping Hands Network",
-    "image": "/images/food-drive.jpg"
+    "image": "../public/images/food-drive.jpg"
   },
   {
     "id": "4",
@@ -53,7 +53,7 @@
     "timeCommitment": "Half-day",
     "ageRequirement": "18+",
     "organization": "City Animal Care",
-    "image": "/images/animal-shelter.jpg"
+    "image": "../public/images/animal-shelter.jpg"
   },
   {
     "id": "5",
@@ -67,7 +67,7 @@
     "timeCommitment": "1–2 hours",
     "ageRequirement": "18+",
     "organization": "Golden Years Connect",
-    "image": "/images/senior-companion.jpg"
+    "image": "../public/images/senior-companion.jpg"
   },
   {
     "id": "6",
@@ -81,7 +81,7 @@
     "timeCommitment": "One-time event",
     "ageRequirement": "13+",
     "organization": "Urban Growers Collective",
-    "image": "/images/community-garden.jpg"
+    "image": "../public/images/community-garden.jpg"
   },
   {
     "id": "7",
@@ -95,7 +95,7 @@
     "timeCommitment": "Weekly commitment",
     "ageRequirement": "16+",
     "organization": "City Rec League",
-    "image": "/images/youth-soccer.jpg"
+    "image": "../public/images/youth-soccer.jpg"
   },
   {
     "id": "8",
@@ -109,6 +109,6 @@
     "timeCommitment": "Full-day",
     "ageRequirement": "16+",
     "organization": "Downtown Arts Alliance",
-    "image": "/images/art-festival.jpg"
+    "image": "../public/images/art-festival.jpg"
   }
 ]
