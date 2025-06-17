@@ -14,7 +14,7 @@ import Sort from "@/components/ui/custom-elements/sort";
 
 const Events = () => {
   
-
+  
   const [events, setEvents] = useState<VolunteerOpportunity[] | null>(null);
   const [Loading, setLoading] = useState(true);
 
@@ -30,6 +30,7 @@ const queryParams = useMemo(() => {
       try {
         const data = await fetchItems(queryParams);
         setEvents(data);
+        console.log(data[1].image)
       } catch (err) {
         console.error("Failed to load events:", err);
       }finally {
@@ -38,6 +39,11 @@ const queryParams = useMemo(() => {
     };
 
     loadData();
+
+    const interval = setInterval(loadData, 5 * 60 * 1000); // every 5 mins
+
+    return () => clearInterval(interval); // cleanup on unmount
+
   },[location.search])
 
    const isDesktop = useMediaQuery("(min-width: 1024px)");

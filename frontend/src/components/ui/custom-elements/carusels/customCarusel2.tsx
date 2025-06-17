@@ -9,13 +9,29 @@ import {
   CarouselPrevious2,
 } from "@/components/ui/carousel";
 import CardForSingleEvent from "../cards/cardVariant2";
-import { eventData } from "@/dummyData";
+import { type VolunteerOpportunity } from "@/dummyData";
+import { useEffect, useState } from "react";
+import { fetchItemsForCarusels } from "@/API/requests";
 
 const CaruselEvent = () => {
+  
+   const [eventData, seteventData] = useState<VolunteerOpportunity[]>();
+  
+        useEffect(() => {
+          const loadData = async () =>{
+              const data = await fetchItemsForCarusels()
+              console.log(data);
+              seteventData(data)
+          }
+          
+          loadData()
+      },[])
+      
+      
   return (
     <Carousel className="w-full  max-w-[1443px] px-[10px]">
       <CarouselContent>
-        {eventData.map((data) => (
+        {eventData && eventData.map((data) => (
           <CarouselItem key={data.id}>
             <CardForSingleEvent data={data} />
           </CarouselItem>

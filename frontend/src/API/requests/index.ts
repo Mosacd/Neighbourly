@@ -23,6 +23,17 @@ const getUrlParams = (searchParams: URLSearchParams) => {
 
 
 
+export const fetchItemsForCarusels = async () => {
+  const urlParams = {  sort: "Newest" }
+
+  const response = await httpClient.get("/api/Data", {
+    params: urlParams,
+  });
+
+  return response.data.slice(0,3);
+};
+
+
 export const fetchSingleItem = async (id:string | undefined) => {
     if(id == undefined){
         throw new Error("id is undefined")

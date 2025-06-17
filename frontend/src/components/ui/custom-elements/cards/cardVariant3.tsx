@@ -4,6 +4,9 @@ import type { VolunteerOpportunity } from "@/dummyData";
 
 const CardForEventList:React.FC<{data:VolunteerOpportunity}> = ({data}) => {
 
+ const imgUrl = `${import.meta.env.VITE_BASE_URL}${data.image}`
+
+
 return( 
      <Link to={`/Events/${data.id}`} className="bg-white dark:bg-black m-auto
      hover:-translate-y-1.5 hover:shadow-xl hover:border-black dark:hover:border-white
@@ -14,7 +17,7 @@ return(
                     <h1 className="noto-sans-semibold title-clamp text-sm sm:text-md md:text-lg lg:text-2xl 2xl:text-3xl mb-[32px]">{data.title}</h1>
                     <p className="noto-sans-regular description-clamp-eventpage text-lg 2xl:text-xl text-[#545454] dark:text-[#828282]">{data.Briefdescription}</p>
                 </div>
-                <img className="w-full rounded-b-none lg:rounded-b-[24px] lg:max-w-[224px] 2xl:max-w-[280px] h-[130px] xs:h-[147px] md:h-[200px] lg:h-[204px] 2xl:h-[253px] rounded-[24px]" src={data.image} alt="" />
+                <img className="w-full rounded-b-none lg:rounded-b-[24px] lg:max-w-[224px] 2xl:max-w-[280px] h-[130px] xs:h-[147px] md:h-[200px] lg:h-[204px] 2xl:h-[253px] rounded-[24px]" src={imgUrl} alt="" />
               </div>
     </Link>   
 )

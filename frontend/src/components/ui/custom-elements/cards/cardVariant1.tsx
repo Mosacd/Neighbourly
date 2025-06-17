@@ -3,6 +3,9 @@ import { Button } from "../../button";
 import type { VolunteerOpportunity } from "@/dummyData";
 
 const CardForHome: React.FC<{ data: VolunteerOpportunity }> = ({ data }) => {
+
+   const imgUrl = `${import.meta.env.VITE_BASE_URL}${data.image}`
+
   return (
     <div className="bg-[#FFDD71] overflow-hidden transition-color duration-300 dark:bg-black max-md:h-[481px] md:max-h-[423px] border-2 border-main dark:border-yellow-600 m-auto shadow-md py-[21px] 2xl:py-[29px] px-[16px] 2xl:px-[24px] rounded-[24px] max-w-[375px] md:max-w-[1200px] 2xl:max-w-[1363px] w-full active:cursor-grabbing select-none">
       <div className="flex flex-col-reverse h-full md:flex-row justify-between items-center gap-6 2xl:gap-10">
@@ -20,7 +23,7 @@ const CardForHome: React.FC<{ data: VolunteerOpportunity }> = ({ data }) => {
         <div className="flex-shrink-0">
         <img
   className="rounded-[24px] w-[296px] h-[268px] md:w-[320px] md:h-[288px] 2xl:w-[400px] 2xl:h-[361px] object-cover"
-  src={data.image}
+  src={imgUrl}
   alt=""
 />
 
