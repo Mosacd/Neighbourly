@@ -1,3 +1,5 @@
+// backend/src/server.ts
+
 import express, { Request, Response } from 'express';
 import path from 'path';
 import fs from 'fs';
@@ -11,28 +13,21 @@ app.use(cors());
 
 const dataPath = path.join(__dirname, 'data', 'Data.json');
 
-// Helper function to load and parse data to avoid repetition
-const loadOpportunities = (): VolunteerOpportunity[] => {
-  const rawData = fs.readFileSync(dataPath, 'utf-8');
-  return JSON.parse(rawData);
+// Helper function to handle single or array query params
+const getQueryAsArray = (value: any): string[] => {
+  if (!value) return [];
+  if (Array.isArray(value)) return value as string[];
+  return [value as string];
 };
 
-app.get('/', (req, res) => {
-  res.send(`
-    <h1>Volunteer Data API</h1>
-    <p>Access data at <a href="/api/Data">/api/Data</a></p>
-    <p>Access a specific opportunity by ID, e.g., <a href="/api/Data/1">/api/Data/1</a></p>
-  `);
-});
-
-
-// --- NEW ENDPOINT to get a single opportunity by ID ---
+// Get a single opportunity by ID
 app.get('/api/Data/:id', (req: Request, res: Response) => {
   try {
-    const opportunities = loadOpportunities();
+    const rawData = fs.readFileSync(dataPath, 'utf-8');
+    const opportunities = JSON.parse(rawData);
+
     const { id } = req.params;
-    
-    const opportunity = opportunities.find(opp => opp.id === id);
+    const opportunity = opportunities.find((opp: any) => opp.id === id);
 
     if (opportunity) {
       res.status(200).json(opportunity);
@@ -43,86 +38,115 @@ app.get('/api/Data/:id', (req: Request, res: Response) => {
     console.error('Server error:', error);
     res.status(500).json({
       error: 'Failed to load data',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
 
-
-// Endpoint to get all opportunities with filtering/sorting
+// Get all opportunities with filtering and sorting
 app.get('/api/Data', (req: Request, res: Response) => {
   try {
-    let opportunities = loadOpportunities();
-    
+    const rawData = fs.readFileSync(dataPath, 'utf-8');
+    const rawOpportunities = JSON.parse(rawData);
+
+    let opportunities: VolunteerOpportunity[] = rawOpportunities.map((opp: any) => ({
+      ...opp,
+      startdate: new Date(opp.startdate),
+      enddate: new Date(opp.enddate),
+    }));
+
     // Search Functionality
     const { search } = req.query;
     if (typeof search === 'string' && search.trim() !== '') {
       const searchTerm = search.toLowerCase();
       opportunities = opportunities.filter(opp =>
-        opp.title.toLowerCase().includes(searchTerm) ||
-        opp.Briefdescription.toLowerCase().includes(searchTerm) ||
-        opp.description.toLowerCase().includes(searchTerm) ||
-        opp.tags.toLowerCase().includes(searchTerm)
+        opp.title.toLowerCase().includes(searchTerm)
       );
     }
 
     // Filtering Functionality
-    const { location, tags } = req.query;
-    if (typeof location === 'string' && location.trim() !== '') {
-      const filterLocation = location.toLowerCase();
+    const locations = getQueryAsArray(req.query.locations);
+    const timeCommitments = getQueryAsArray(req.query.timeCommitments);
+    const ageRequirements = getQueryAsArray(req.query.ageRequirements);
+    const dateFilter = req.query.date as string;
+
+    if (locations.length > 0) {
+      opportunities = opportunities.filter(opp => locations.includes(opp.location));
+    }
+    if (timeCommitments.length > 0) {
       opportunities = opportunities.filter(opp =>
-        opp.location.toLowerCase().includes(filterLocation)
+        timeCommitments.includes(opp.timeCommitment)
       );
     }
-    if (typeof tags === 'string' && tags.trim() !== '') {
-      const filterTags = tags.toLowerCase().split(',').map(tag => tag.trim());
+    if (ageRequirements.length > 0) {
       opportunities = opportunities.filter(opp =>
-        filterTags.every(filterTag => opp.tags.toLowerCase().split(',').includes(filterTag))
+        ageRequirements.includes(opp.ageRequirement)
       );
+    }
+
+    if (dateFilter) {
+      const now = new Date();
+      if (dateFilter === 'This week') {
+        const firstDayOfWeek = new Date(now);
+        firstDayOfWeek.setDate(now.getDate() - now.getDay());
+        const lastDayOfWeek = new Date(firstDayOfWeek);
+        lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
+        opportunities = opportunities.filter(
+          opp => opp.startdate >= firstDayOfWeek && opp.startdate <= lastDayOfWeek
+        );
+      } else if (dateFilter === 'This Month') {
+        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        opportunities = opportunities.filter(
+          opp => opp.startdate >= startOfMonth && opp.startdate <= endOfMonth
+        );
+      }
     }
 
     // Sorting Functionality
+    const sortValue = (req.query.sort as string) || 'Newest';
+    
+    console.log('Sorting by:', sortValue);
+    console.log('Sample dates before sort:', opportunities.slice(0, 2).map(o => ({ title: o.title, startdate: o.startdate })));
 
-    const { sortBy, sortOrder } = req.query;
-    if (typeof sortBy === 'string') {
-      opportunities.sort((a, b) => {
-        const key = sortBy as keyof VolunteerOpportunity;
+    opportunities.sort((a, b) => {
+      switch (sortValue) {
+        case 'Oldest':
+          // Sort by startdate ascending (oldest first)
+          return a.startdate.getTime() - b.startdate.getTime();
+          
+        case 'Alphabetically, A-Z':
+          // Sort alphabetically A to Z
+          return a.title.localeCompare(b.title);
+          
+        case 'Alphabetically, Z-A':
+          // Sort alphabetically Z to A
+          return b.title.localeCompare(a.title);
+          
+        case 'Newest':
+        default:
+          // Sort by startdate descending (newest first)
+          return b.startdate.getTime() - a.startdate.getTime();
+      }
+    });
 
-        // Provide default empty string for optional fields to avoid errors
-        const valA = a[key] ?? '';
-        const valB = b[key] ?? '';
-
-        if (valA < valB) return sortOrder === 'desc' ? 1 : -1;
-        if (valA > valB) return sortOrder === 'desc' ? -1 : 1;
-        return 0;
-      });
-    }
+    console.log('Sample data after sort:', opportunities.slice(0, 3).map(o => ({ title: o.title, startdate: o.startdate.toISOString().split('T')[0] })));
 
     res.status(200).json(opportunities);
-
   } catch (error) {
     console.error('Server error:', error);
     res.status(500).json({
       error: 'Failed to load data',
-      details: error instanceof Error ? error.message : 'Unknown error'
+      details: error instanceof Error ? error.message : 'Unknown error',
     });
   }
 });
 
 if (process.env.NODE_ENV !== 'test') {
-  const server = app.listen(PORT, () => {
+  app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
-    // This console.log is helpful for debugging the path during development
-    console.log(`Expecting data file at: ${dataPath}`);
-  });
-
-  server.on('error', (error: NodeJS.ErrnoException) => {
-    if (error.code === 'EADDRINUSE') {
-      console.error(`Port ${PORT} is already in use.`);
-    } else {
-      console.error('Server error:', error);
-    }
   });
 }
 
 export default app;
+
