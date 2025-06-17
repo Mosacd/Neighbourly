@@ -1,20 +1,14 @@
 import CardForEventList from "@/components/ui/custom-elements/cards/cardVariant3";
 import SearchBar from "@/components/ui/custom-elements/searchBar";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTriggerForSort,
-  SelectValue,
-} from "@/components/ui/select";
 import Filters from "@/components/ui/custom-elements/filters";
 import FiltersMobile from "@/components/ui/custom-elements/mobileFilters";
 import useMediaQuery from "@/hooks/MediaQuery";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchItems } from "@/API/requests";
 import type { VolunteerOpportunity } from "@/dummyData";
 import EnhancedLoader from "@/components/ui/custom-loader";
-import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import Sort from "@/components/ui/custom-elements/sort";
 
 
 
@@ -23,21 +17,28 @@ const Events = () => {
 
   const [events, setEvents] = useState<VolunteerOpportunity[] | null>(null);
   const [Loading, setLoading] = useState(true);
-  const [searchParams] = useSearchParams();
+
+ const location = useLocation();
+
+const queryParams = useMemo(() => {
+  return new URLSearchParams(location.search);
+}, [location.search]);
+
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await fetchItems(searchParams);
+        const data = await fetchItems(queryParams);
         setEvents(data);
-          setLoading(false);
       } catch (err) {
         console.error("Failed to load events:", err);
-      }
+      }finally {
+      setLoading(false);
+    }
     };
 
     loadData();
-  },[])
+  },[location.search])
 
    const isDesktop = useMediaQuery("(min-width: 1024px)");
 
@@ -56,19 +57,7 @@ const Events = () => {
         <div className="flex flex-col gap-5 md:flex-row items-center justify-between lg:justify-center mb-[40px] sm:mb-[60px] 2xl:mb-[80px]">
           <SearchBar />
           <div className="flex w-full max-w-[250px] lg:w-fit justify-between">
-          <Select defaultValue="ENG">  
-            <SelectTriggerForSort className="w-full min-w-[110px] lg:min-w-[130px] max-w-[120px] px-0 2xl:max-w-[240px] data-[size=default]:h-[53px] text-md sm:text-lg 2xl:text-xl border-none noto-sans-semibold">
-              <SelectValue>Sort By</SelectValue>
-            </SelectTriggerForSort> 
-            <SelectContent  position="popper"
-                sideOffset={5}
-                align="center" className="min-w-[116px] max-xs:max-w-[120px] ">
-              <SelectItem value="GEO">Newest</SelectItem>
-              <SelectItem value="ENG">Oldest</SelectItem>
-              <SelectItem  value="RUS"><span className="max-xs:hidden">Alphabetically, </span>Z-A</SelectItem>
-              <SelectItem value="RUS"><span className="max-xs:hidden">Alphabetically, </span>A-Z</SelectItem>
-            </SelectContent>
-          </Select>
+            <Sort/>
            {!isDesktop && <FiltersMobile />}
           </div>
         </div>
@@ -78,7 +67,7 @@ const Events = () => {
       <EnhancedLoader/>
     </div>
   ) : (events && events.length > 0 ? events.map((data) => {
-    return <CardForEventList data={data} />;
+    return <CardForEventList key={data.id} data={data} />;
   }) : (
     <div className="col-span-full flex items-center justify-center h-full">
       currently no events are hosted
