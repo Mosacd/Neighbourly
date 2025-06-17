@@ -1,13 +1,8 @@
-// import logo from "@/assets/Neighbourly logo.svg";
-// import fb from "@/assets/mediaLinks/basil_facebook-outline.svg";
-// import tw from "@/assets/mediaLinks/prime_twitter.svg";
-// import tt from "@/assets/mediaLinks/meteor-icons_tiktok.svg";
-// import inst from "@/assets/mediaLinks/mdi_instagram.svg";
 
 const Footer = () => {
   return (
     <div className="h-[320px] sm:h-[400px] 2xl:h-[465px] p-[24px] md:py-[95px] md:px-[40px] xl:px-[80px] 2xl:px-[120px] 2xl:py-[119px] mt-[80px] sm:mt-[120px] shadow-top dark:shadow-neutral-800">
-      <div className="flex flex-col md:flex-row gap-1 md:gap-10 sm:justify-between sm:items-center w-full h-full m-auto max-w-[1200px] 2xl:max-w-[1475px]">
+      <div className="flex flex-col md:flex-row gap-1 md:gap-10 sm:justify-between items-center w-full h-full m-auto max-w-[1200px] 2xl:max-w-[1475px]">
         <div className="flex gap-[8px] sm:gap-[24px] items-center">
           <svg
             className="w-full max-w-[40px] sm:max-w-[80px] fill-main dark:fill-yellow-600 2xl:max-w-[96px]"

@@ -72,7 +72,8 @@ useEffect(() => {
         const description = eventData.description || "";
      const truncatedDescription = description.slice(0, 200) + "...";
      const shouldShowToggle = description.length > 200;
-
+  const imgUrl = `${import.meta.env.VITE_BASE_URL}${eventData.image}`
+  
     return (
         <>
         <div className="w-full">
@@ -105,7 +106,7 @@ useEffect(() => {
                 <Button variant={"secondary"} className="shrink-1 lg:max-w-[210px] 2xl:max-w-[264px] w-full max-lg:h-[53px] max-lg:text-[24px] max-w-[343px]">Bookmark</Button>
                 </div>
             </div>
-            <img className="w-full max-2xl:max-h-[563px] max-w-[652px] 2xl:max-w-[830px] rounded-[24px]" src={eventData.image} alt="" />
+            <img className="w-full max-2xl:max-h-[563px] max-w-[652px] 2xl:max-w-[830px] rounded-[24px]" src={imgUrl} alt="" />
         </div>
         <CaruselSection/>
         </div>

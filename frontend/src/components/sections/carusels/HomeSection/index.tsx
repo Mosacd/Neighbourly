@@ -1,7 +1,10 @@
+
 import CaruselHome from "@/components/ui/custom-elements/carusels/customCarusel1";
 
 
+
 const CaruselSection = () => {
+
 
 return(    <div className="h-[720px] md:h-[640px] 2xl:h-[720px] w-full bg-[#FFF5D7] dark:bg-[rgb(35,35,35)]">
                 <div className="m-auto flex flex-col items-center justify-center py-[26px]">
