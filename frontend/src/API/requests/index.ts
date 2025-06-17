@@ -17,7 +17,7 @@ const getUrlParams = (searchParams: URLSearchParams) => {
     ageRequirements: searchParams.getAll("ageRequirement") ?? [],
     Dates: searchParams.getAll("date") ?? [],
     search: searchParams.get("search") ?? null,
-    sort: searchParams.get("sort") ?? "Newest"
+    sort: searchParams.get("sortBy") ?? "Newest"
   };
 };
 
