@@ -9,6 +9,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 
+app.use(express.static(path.join(__dirname, '../public')));
+
 const dataPath = path.join(__dirname, 'data', 'Data.json');
 
 const getQueryAsArray = (value: any): string[] => {
