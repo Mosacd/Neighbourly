@@ -14,17 +14,21 @@ import { useEffect, useState } from "react";
 import { fetchItems } from "@/API/requests";
 import type { VolunteerOpportunity } from "@/dummyData";
 import EnhancedLoader from "@/components/ui/custom-loader";
+import { useSearchParams } from "react-router-dom";
+
 
 
 const Events = () => {
+  
 
   const [events, setEvents] = useState<VolunteerOpportunity[] | null>(null);
   const [Loading, setLoading] = useState(true);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await fetchItems();
+        const data = await fetchItems(searchParams);
         setEvents(data);
           setLoading(false);
       } catch (err) {
