@@ -28,7 +28,6 @@ export const eventData: VolunteerOpportunity[] = [
     location: "Downtown",
     timeCommitment: "Weekly commitment",
     ageRequirement: "16+",
-    tags: "reading,kids,education",
     organization: "City Library",
     image: image
   },
@@ -43,7 +42,6 @@ export const eventData: VolunteerOpportunity[] = [
     location: "Westside",
     timeCommitment: "One-time event",
     ageRequirement: "13+",
-    tags: "environment,cleanup,community",
     organization: "Green City Volunteers",
     image: "/images/park-cleanup.jpg"
   },
@@ -58,7 +56,6 @@ export const eventData: VolunteerOpportunity[] = [
     location: "Citywide Donation Centers",
     timeCommitment: "One-time event",
     ageRequirement: "13+",
-    tags: "food,donation,community",
     organization: "Helping Hands Network",
     image: "/images/food-drive.jpg"
   }
