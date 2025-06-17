@@ -3,11 +3,12 @@ export interface VolunteerOpportunity {
   title: string;
   Briefdescription: string;
   description: string;
-  startdate: string; 
-  enddate?: string;
+  startdate: Date;
+  enddate: Date;
   schedule: string;
   location: string;
-  tags: string; 
+  timeCommitment: string;
+  ageRequirement: string;
   organization?: string;
-  image: string; 
+  image: string;
 }
