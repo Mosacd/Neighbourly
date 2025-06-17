@@ -1,5 +1,3 @@
-// backend/src/server.ts
-
 import express, { Request, Response } from 'express';
 import path from 'path';
 import fs from 'fs';
@@ -13,14 +11,12 @@ app.use(cors());
 
 const dataPath = path.join(__dirname, 'data', 'Data.json');
 
-// Helper function to handle single or array query params
 const getQueryAsArray = (value: any): string[] => {
   if (!value) return [];
   if (Array.isArray(value)) return value as string[];
   return [value as string];
 };
 
-// Get a single opportunity by ID
 app.get('/api/Data/:id', (req: Request, res: Response) => {
   try {
     const rawData = fs.readFileSync(dataPath, 'utf-8');
@@ -43,11 +39,11 @@ app.get('/api/Data/:id', (req: Request, res: Response) => {
   }
 });
 
-// Get all opportunities with filtering and sorting
 app.get('/api/Data', (req: Request, res: Response) => {
   try {
     const rawData = fs.readFileSync(dataPath, 'utf-8');
     const rawOpportunities = JSON.parse(rawData);
+    console.log(`Loaded ${rawOpportunities.length} opportunities from Data.json`);
 
     let opportunities: VolunteerOpportunity[] = rawOpportunities.map((opp: any) => ({
       ...opp,
@@ -55,7 +51,6 @@ app.get('/api/Data', (req: Request, res: Response) => {
       enddate: new Date(opp.enddate),
     }));
 
-    // Search Functionality
     const { search } = req.query;
     if (typeof search === 'string' && search.trim() !== '') {
       const searchTerm = search.toLowerCase();
@@ -64,7 +59,6 @@ app.get('/api/Data', (req: Request, res: Response) => {
       );
     }
 
-    // Filtering Functionality
     const locations = getQueryAsArray(req.query.locations);
     const timeCommitments = getQueryAsArray(req.query.timeCommitments);
     const ageRequirements = getQueryAsArray(req.query.ageRequirements);
@@ -103,36 +97,31 @@ app.get('/api/Data', (req: Request, res: Response) => {
       }
     }
 
-    // Sorting Functionality
-    const sortValue = (req.query.sort as string) || 'Newest';
+    console.log(`Processing ${opportunities.length} opportunities after filters.`);
+
+    let sortValue = (req.query.sort as string) || 'Newest';
     
-    console.log('Sorting by:', sortValue);
-    console.log('Sample dates before sort:', opportunities.slice(0, 2).map(o => ({ title: o.title, startdate: o.startdate })));
+    sortValue = sortValue.replace('>', '').trim();
+
+    console.log(`Sorting by: ${sortValue}`); 
 
     opportunities.sort((a, b) => {
       switch (sortValue) {
         case 'Oldest':
-          // Sort by startdate ascending (oldest first)
           return a.startdate.getTime() - b.startdate.getTime();
-          
         case 'Alphabetically, A-Z':
-          // Sort alphabetically A to Z
           return a.title.localeCompare(b.title);
-          
         case 'Alphabetically, Z-A':
-          // Sort alphabetically Z to A
           return b.title.localeCompare(a.title);
-          
         case 'Newest':
         default:
-          // Sort by startdate descending (newest first)
           return b.startdate.getTime() - a.startdate.getTime();
       }
     });
 
-    console.log('Sample data after sort:', opportunities.slice(0, 3).map(o => ({ title: o.title, startdate: o.startdate.toISOString().split('T')[0] })));
-
+    console.log(`Returning ${opportunities.length} sorted opportunities to the client.`);
     res.status(200).json(opportunities);
+    
   } catch (error) {
     console.error('Server error:', error);
     res.status(500).json({
@@ -149,4 +138,3 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 export default app;
-
