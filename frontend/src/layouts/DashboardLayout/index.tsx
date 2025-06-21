@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 import Loader from "@/components/ui/custom-loader";
 import ScrollToTop from "@/components/scrollToTheTop";
 
-const Layout = () => {
+const DashboardLayout = () => {
 
       const [loading, setLoading] = useState(true);
 
@@ -45,4 +45,4 @@ return(
 
 }
 
-export default Layout;
+export default DashboardLayout;
