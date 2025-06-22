@@ -12,13 +12,24 @@ import { fetchItemsForCarusels } from "@/API/requests";
 import type { VolunteerOpportunity } from "@/dummyData";
 
 const CaruselHome = () => {
-  const [eventData, seteventData] = useState<VolunteerOpportunity[]>();
+  const [eventData, seteventData] = useState<VolunteerOpportunity[]>([]);
 
       useEffect(() => {
         const loadData = async () =>{
-            const data = await fetchItemsForCarusels()
-            console.log(data);
-            seteventData(data)
+            try {
+        const data = await fetchItemsForCarusels();
+        console.log("Fetched data:", data);
+
+        if (Array.isArray(data)) {
+          seteventData(data);
+        } else {
+          console.warn("Expected an array, got:", data);
+          seteventData([]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch carousel data:", error);
+        seteventData([]);
+      }
         }
         
         loadData()

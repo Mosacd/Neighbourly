@@ -29,8 +29,8 @@ const queryParams = useMemo(() => {
     const loadData = async () => {
       try {
         const data = await fetchItems(queryParams);
-        setEvents(data);
-        console.log(data[1].image)
+        setEvents(Array.isArray(data) ? data : [])
+        
       } catch (err) {
         console.error("Failed to load events:", err);
       }finally {
