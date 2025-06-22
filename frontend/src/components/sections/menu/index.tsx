@@ -4,9 +4,12 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTi
 import { Link } from "react-router-dom";
 // import burgerMenuIcon from "@/assets/burger-menu-icon.svg"
 import LanguageSelect from "@/components/ui/custom-elements/customLangSelect";
+import { useState } from "react";
 
 
 const Menu = () => {
+
+  const [user,setUser] = useState(true)
 
   return (
     <div className="flex lg:hidden">
@@ -33,11 +36,25 @@ const Menu = () => {
                 <Button className="w-full text-xl p-6">Event Catalog</Button>
               </Link>
             </SheetClose>
-              <SheetClose asChild>
+            {user ?
+            <div className="flex flex-col gap-4">
+             <SheetClose asChild>
+               <Link to={'/Dashboard/Profile'}>
+                <Button variant={"secondary"} className="w-full text-xl p-6">Profile</Button>
+              </Link>
+            </SheetClose> 
+                <SheetClose asChild>
+           
+                <Button variant={"destructive"} className="w-full text-xl p-6">Sign Out</Button>
+             
+            </SheetClose> 
+            </div>
+            : <SheetClose asChild>
                <Link to={'/Auth/SignIn'}>
                 <Button variant={"secondary"} className="w-full text-xl p-6">Sign In</Button>
               </Link>
-            </SheetClose>
+            </SheetClose>}
+              
            
               <div className="flex justify-around">
                  <LanguageSelect /> 

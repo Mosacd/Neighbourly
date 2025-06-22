@@ -6,8 +6,12 @@ import { Link } from "react-router-dom";
 // import burgerMenuIcon from "@/assets/burger-menu-icon.svg"
 import Menu from "@/components/sections/menu";
 import LanguageSelect from "@/components/ui/custom-elements/customLangSelect";
+import { useState } from "react";
+import { User } from "lucide-react";
 
 const Header = () => {
+
+ const [user, setUser] = useState<boolean>(false)
 
   return (
   <div className="flex bg-background items-center w-full h-[80px] sm:h-[120px] 2xl:h-[140px] sm:py-[18px] 2xl:py-[22px] px-[24px] sm:px-[40px] xl:px-[80px] 2xl:px-[120px] shadow-bottom dark:shadow-neutral-800">
@@ -33,11 +37,22 @@ const Header = () => {
      
  <LanguageSelect />
 <ToggleSwitch/>
- <Link to={'/Auth/SignIn'}>
+ {user ? (
+          <Link className="w-fit rounded-lg overflow-hidden" to={`/Dashboard/Profile`}>
+         <Button variant={"ghost"} className="h-[46px] 2xl:h-[53px] w-[46px] 2xl:w-[53px] rounded-lg border-2 border-black dark:border-white">
+                  <User className="size-8 text-black dark:text-white duration-100" />
+              </Button>
+          </Link>
+      ) : (
+        <div className="hidden md:flex ml-auto">
+           <Link to={'/Auth/SignIn'}>
           <Button className="" variant={"default"}>
             Sign In
           </Button>
   </Link>
+        </div>
+      )}
+
         </div>
     </div>
   </div>
