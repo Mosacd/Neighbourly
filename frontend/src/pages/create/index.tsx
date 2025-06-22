@@ -11,22 +11,44 @@ import { z } from "zod";
 
 
 const formSchema = z.object({
-  title: z
+  title: z.string().min(1, { message: "Title is required" }),
+  location: z.string().min(1, { message: "Location is required" }),
+
+  shortDescription: z
     .string()
-    .email({ message: "Invalid email address" })
-    .nonempty({ message: "Email is required" }),
-  location: z
+    .min(8, { message: "Description must be at least 8 characters" })
+    .max(20, { message: "Description must be at most 20 characters" }),
+
+  detailedDescription: z
     .string()
-    .min(8, { message: "Password must be at least 8 characters." })
-    .nonempty({ message: "Password is required" }),
-  shortDescription: z.string()
-    .min(8, { message: "Description must be at most 20 characters." })
-    .nonempty({ message: "Password is required" }),
-  detailedDescription: z.string()
-    .min(8, { message: "Description must be at most 200 characters." })
-    .nonempty({ message: "Password is required" }),
-  image: z.string().nonempty({ message: "Picture Required" }),
+    .min(8, { message: "Description must be at least 8 characters" })
+    .max(200, { message: "Description must be at most 200 characters" }),
+
+  image: z.string().min(1, { message: "Picture is required" }),
+  schedule: z.string().min(1, { message: "Schedule is required" }),
+
+  start: z
+    .string()
+    .refine(
+      (val) => {
+        const date = new Date(val);
+        return !isNaN(date.getTime()) && date > new Date();
+      },
+      { message: "Start date must be a valid future date" }
+    ),
+
+  end: z
+    .string()
+    .refine(
+      (val) => {
+        const date = new Date(val);
+        return !isNaN(date.getTime()) && date > new Date();
+      },
+      { message: "End date must be a valid future date" }
+    ),
 });
+
+
 
 const CreateEvent = () => {
 
@@ -54,13 +76,14 @@ const [fileName, setFileName] = useState<string | null>(null);
   }
 
   return (
-    <div className="flex w-full 2xl:max-w-[1680px]">
+    <div className="flex w-full justify-center my-[60px] sm:my-[120px] px-3 max-lg:sm:px-10">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex justify-between w-full dark:text-white 2xl:max-w-[1680px]"
+          className="flex flex-col items-center w-full max-w-[500px] md:max-w-[600px] lg:max-w-[1296px] 2xl:max-w-[1680px]"
         >
-          <div className="w-full max-w-[830px]">
+          <div className="flex flex-col-reverse lg:flex-row justify-between gap-10 lg:gap-20 w-full dark:text-white lg:h-[620px] 2xl:h-[764px]">
+          <div className="flex flex-col gap-5 justify-between w-full lg:max-w-[638px] 2xl:max-w-[830px] h-full">
           <FormField
   control={form.control}
   name="image"
@@ -71,13 +94,13 @@ const [fileName, setFileName] = useState<string | null>(null);
           {/* Upload Box */}
           <div
             onClick={() => fileInputRef.current?.click()}
-            className="w-full h-[200px] 2xl:h-[520px] bg-neutral-200 dark:bg-input/30 rounded-[12px] border border-dashed border-gray-400 flex items-center justify-center cursor-pointer overflow-hidden relative"
+            className="w-full h-[230px] xs:h-[300px] p-1 lg:h-[400px] 2xl:h-[520px] dark:bg-input/30 rounded-[12px] border-2 border-dashed border-gray-400 flex items-center justify-center cursor-pointer overflow-hidden relative"
           >
             {imagePreview ? (
               <img
                 src={imagePreview}
                 alt="Preview"
-                className="object-cover w-full h-full p-20"
+                className="object-cover w-full h-full rounded-[10px]"
               />
             ) : (
               <Paperclip className="w-10 h-10 text-gray-600" />
@@ -115,9 +138,51 @@ const [fileName, setFileName] = useState<string | null>(null);
 />
 
 
+ <FormField
+              control={form.control}
+              name="schedule"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="noto-sans-semibold text-[14px] 2xl:text-[16px] font-[700]">Schedule</FormLabel>
+                  <FormControl>
+                    <Input className="bg-neutral-200 h-[42px] 2xl:h-[48px]  rounded-[8px] noto-sans-semibold  text-[14px] 2xl:text-[16px] " {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+<div className="flex flex-col xs:flex-row justify-center md:justify-start gap-5 xs:gap-10">
+             <FormField
+              control={form.control}
+              name="start"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="noto-sans-semibold text-[14px] 2xl:text-[16px] font-[700]">Start Date</FormLabel>
+                  <FormControl>
+                    <Input type="date" className="bg-neutral-200 h-[42px] 2xl:h-[48px]  rounded-[8px] noto-sans-semibold  text-[14px] 2xl:text-[16px] " {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+             <FormField
+              control={form.control}
+              name="end"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="noto-sans-semibold text-[14px] 2xl:text-[16px] font-[700]">End Date</FormLabel>
+                  <FormControl>
+                    <Input type="date" className="bg-neutral-200 h-[42px] 2xl:h-[48px]  rounded-[8px] noto-sans-semibold  text-[14px] 2xl:text-[16px] " {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+</div>
+
           </div>
 
-          <div className="flex flex-col gap-[12px] 2xl:gap-[16px] w-full max-w-[688px]">
+          <div className="flex flex-col max-lg:gap-5 w-full lg:max-w-[578px] 2xl:max-w-[688px] h-full justify-between">
             <FormField
               control={form.control}
               name="title"
@@ -148,6 +213,7 @@ const [fileName, setFileName] = useState<string | null>(null);
                 </FormItem>
               )}
             />
+         
               <FormField
               control={form.control}
               name="shortDescription"
@@ -156,7 +222,7 @@ const [fileName, setFileName] = useState<string | null>(null);
                   <FormLabel className="noto-sans-semibold text-[14px] 2xl:text-[16px]">Short Description</FormLabel>
                   <FormControl>
                     <Textarea
-                      className="bg-neutral-200 2xl:min-h-[141px] 2xl:max-h-[141px] rounded-[8px] noto-sans-semibold"
+                      className="bg-neutral-200 lg:min-h-[77px] lg:max-h-[77px] rounded-[8px] noto-sans-semibold"
                       {...field}
                     />
                   </FormControl>
@@ -172,7 +238,7 @@ const [fileName, setFileName] = useState<string | null>(null);
                   <FormLabel className="noto-sans-semibold text-[14px] 2xl:text-[16px]">Detailed Description</FormLabel>
                   <FormControl>
                     <Textarea
-                      className="bg-neutral-200 2xl:min-h-[267px] 2xl:max-h-[267px] rounded-[8px] noto-sans-semibold"
+                      className="bg-neutral-200 min-h-[100px] lg:min-h-[202px] lg:max-h-[202px] 2xl:min-h-[266px] 2xl:max-h-[266px] rounded-[8px] noto-sans-semibold"
                       {...field}
                     />
                   </FormControl>
@@ -180,16 +246,18 @@ const [fileName, setFileName] = useState<string | null>(null);
                 </FormItem>
               )}
             />
+         
     </div>
-
-          <FormDescription className="flex justify-center gap-2">
+</div>
+          <FormDescription className="flex justify-center w-full self-end mt-10 lg:mt-20 border-t-2">
              <Button
-                className="w-full dark:text-white"
+                className="max-w-[400px] w-full dark:text-white mt-5"
                 type="submit"
               >
                 Publish
               </Button>
           </FormDescription>
+          
         </form>
       </Form>
     </div>

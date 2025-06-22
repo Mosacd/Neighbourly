@@ -15,7 +15,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/Dashboard/Home" replace />} />
       <Route path="Dashboard" element={<DashboardLayout />}>
-        {/* <Route index element={<Navigate to="/home" />} /> */}
+        <Route index element={<Navigate to="/Home" />} />
         <Route path="Home" element={<Home />} />
         <Route path="Events" element={<Events />} />
         <Route path="Events/:id" element={<SingleEvent />} />
