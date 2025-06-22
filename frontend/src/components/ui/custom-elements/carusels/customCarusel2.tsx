@@ -19,9 +19,19 @@ const CaruselEvent = () => {
   
         useEffect(() => {
           const loadData = async () =>{
-              const data = await fetchItemsForCarusels()
-              console.log(data);
-              seteventData(data)
+             try {
+        const data = await fetchItemsForCarusels();
+        console.log("Fetched data:", data);
+
+        if (Array.isArray(data)) {
+          seteventData(data);
+        } else {
+          seteventData([]);
+        }
+      } catch (error) {
+        console.error("Error loading event data:", error);
+        seteventData([]);
+      }
           }
           
           loadData()

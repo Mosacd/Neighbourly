@@ -7,6 +7,7 @@ import Events from './pages/Events'
 import AuthLayout from './layouts/AuthLayout'
 import SignInForm from './pages/SignIn'
 import SignUpForm from './pages/SignUp'
+import CreateEvent from './pages/create'
 
 function App() {
   
@@ -14,10 +15,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Navigate to="/Dashboard/Home" replace />} />
       <Route path="Dashboard" element={<DashboardLayout />}>
-        {/* <Route index element={<Navigate to="/home" />} /> */}
+        <Route index element={<Navigate to="/Home" />} />
         <Route path="Home" element={<Home />} />
         <Route path="Events" element={<Events />} />
         <Route path="Events/:id" element={<SingleEvent />} />
+        <Route path="CreateEvent" element={<CreateEvent />} />
       </Route>
       <Route path="Auth" element={<AuthLayout />}>
         <Route index element={<Navigate to="/Auth/SignIn" replace />} />

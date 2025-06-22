@@ -27,8 +27,8 @@ const handleSort = (value: string) => {
                 align="center" className="min-w-[116px] max-xs:max-w-[120px] ">
               <SelectItem value="Newest">Newest</SelectItem>
               <SelectItem value="Oldest">Oldest</SelectItem>
-              <SelectItem  value=">Alphabetically, Z-A"><span className="max-xs:hidden">Alphabetically, </span>Z-A</SelectItem>
-              <SelectItem value="Alphabetically, A-Z"><span className="max-xs:hidden">Alphabetically, </span>A-Z</SelectItem>
+              <SelectItem  value=">Alphabetically, Z-A"><span className="max-xs:hidden"></span>Z-A</SelectItem>
+              <SelectItem value="Alphabetically, A-Z"><span className="max-xs:hidden"></span>A-Z</SelectItem>
             </SelectContent>
           </Select>
     )
