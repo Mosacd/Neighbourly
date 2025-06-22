@@ -16,7 +16,7 @@ const CardForHome: React.FC<{ data: VolunteerOpportunity }> = ({ data }) => {
           <p className="description-clamp noto-sans-regular hidden md:block text-lg 2xl:text-xl line-clamp-3 text-[#545454] dark:text-[#dddcdc] mb-[26px] 2xl:mb-[32px]">
             {data.Briefdescription}
           </p>
-          <Link className="w-full md:w-fit" to={`/Events/${data.id}`}>
+          <Link className="w-full md:w-fit" to={`/Dashboard/Events/${data.id}`}>
             <Button className="px-6 w-full max-md:text-[24px] max-md:h-[53px]" variant={"secondary"}>See More</Button>
           </Link>
         </div>

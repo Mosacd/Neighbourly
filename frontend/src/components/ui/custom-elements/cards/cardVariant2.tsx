@@ -13,7 +13,7 @@ return(
                     <h1 className="noto-sans-semibold title-clamp text-xl md:text-2xl 2xl:text-3xl mb-[24px] md:mb-[40px] 2xl:mb-[48px]">{data.title}</h1>
 <p className="description-clamp noto-sans-regular text-lg 2xl:text-xl text-[#545454] dark:text-[#828282] mb-[26px] 2xl:mb-[32px]">
   {data.Briefdescription}
-</p>                 <Link className="w-full md:w-fit" to={`/Events/${data.id}`}><Button className="px-6 w-full max-md:text-[24px] max-md:h-[53px]" variant={"secondary"}>See More</Button></Link> 
+</p>                 <Link className="w-full md:w-fit" to={`/Dashboard/Events/${data.id}`}><Button className="px-6 w-full max-md:text-[24px] max-md:h-[53px]" variant={"secondary"}>See More</Button></Link> 
                 </div>
                   <div className="flex-shrink-0">
                 <img className="rounded-[24px] w-[296px] h-[268px] md:w-[320px] md:h-[288px] 2xl:w-[400px] 2xl:h-[361px] object-cover" src={imgUrl} alt="" />
