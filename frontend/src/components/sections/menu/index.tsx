@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const Menu = () => {
 
-  const [user,setUser] = useState(false)
+  const [user,] = useState(false)
 
   return (
     <div className="flex lg:hidden">

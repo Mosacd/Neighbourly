@@ -11,7 +11,7 @@ import { User } from "lucide-react";
 
 const Header = () => {
 
- const [user, setUser] = useState<boolean>(false)
+ const [user,] = useState<boolean>(false)
 
   return (
   <div className="flex bg-background items-center w-full h-[80px] sm:h-[120px] 2xl:h-[140px] sm:py-[18px] 2xl:py-[22px] px-[24px] sm:px-[40px] xl:px-[80px] 2xl:px-[120px] shadow-bottom dark:shadow-neutral-800">
