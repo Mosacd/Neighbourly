@@ -29,13 +29,13 @@ const Menu = () => {
             </SheetTitle>
    
             <SheetClose asChild>
-               <Link to={'/Events'}>
+               <Link to={'/Dashboard/Events'}>
                 <Button className="w-full text-xl p-6">Event Catalog</Button>
               </Link>
             </SheetClose>
               <SheetClose asChild>
-               <Link to={'/Events'}>
-                <Button variant={"secondary"} className="w-full text-xl p-6">Sign Up</Button>
+               <Link to={'/Auth/SignIn'}>
+                <Button variant={"secondary"} className="w-full text-xl p-6">Sign In</Button>
               </Link>
             </SheetClose>
            

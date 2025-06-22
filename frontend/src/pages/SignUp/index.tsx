@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 // import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -18,26 +19,37 @@ const formSchema = z.object({
     .string()
     .min(8, { message: "Password must be at least 8 characters." })
     .nonempty({ message: "Password is required" }),
+     Rpassword: z.string()
+      .min(8, { message: "Password must be at least 8 characters." })
+      .nonempty({ message: "Password is required" }),
 });
 
 const SignUpForm = () => {
 
 
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-    },
-  });
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+          email: "",
+          username: "",
+          password: "",
+          Rpassword: "",
+        },
+      });
+
+      const [match, setMatch] = useState(true);
 
 
 
 
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    function onSubmit(values: z.infer<typeof formSchema>) {
+    if(values.password == values.Rpassword) {
+    console.log("signed up")
+    }else {
+      console.log("Passwords do not match");
+      setMatch(false);
+    }
   }
 
   return (
@@ -130,12 +142,15 @@ const SignUpForm = () => {
                 className="w-full dark:text-white"
                 type="submit"
               >
-                Sign In
+                Sign Up
               </Button>
 
               
             </div>
           <FormDescription className="flex justify-center gap-2">
+             {!match &&   <h1 className="text-md text-red-600 dark:text-gray-500">
+                Passwords do not match
+              </h1>}
                   </FormDescription>
         </form>
       </Form>

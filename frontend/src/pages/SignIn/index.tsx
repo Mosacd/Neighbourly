@@ -3,6 +3,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import { z } from "zod";
 
@@ -103,7 +104,7 @@ const SignInForm = () => {
             </div>
           <FormDescription className="flex justify-center gap-2">
             <span className="text-[#726f6f] text-[14px] 2xl:text-[16px] noto-sans-semibold">Don’t have an account?</span>
-            <span  className="text-[14px] 2xl:text-[16px] noto-sans-semibold self-start text-black  noto-sans-regular text-main-green dark:text-white dark:hover:text-neutral-300 font-semibold hover:text-neutral-800 hover:underline hover:cursor-pointer">SIGN UP</span>
+            <Link to="/Auth/SignUp"><span  className="text-[14px] 2xl:text-[16px] noto-sans-semibold self-start text-black  noto-sans-regular text-main-green dark:text-white dark:hover:text-neutral-300 font-semibold hover:text-neutral-800 hover:underline hover:cursor-pointer">SIGN UP</span></Link>
           </FormDescription>
         </form>
       </Form>
