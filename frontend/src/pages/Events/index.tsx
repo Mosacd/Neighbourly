@@ -51,7 +51,7 @@ const Events = () => {
  const {data:events = [], isPending, error, isError } = useGetEvents();
 
  if(isError){
-  throw new Error(`couldn't fetch events: ${error}`)
+  console.log(`couldn't fetch events: ${error}`)
  }
 
    const isDesktop = useMediaQuery("(min-width: 1024px)");

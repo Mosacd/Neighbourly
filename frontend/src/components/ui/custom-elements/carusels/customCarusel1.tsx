@@ -43,9 +43,11 @@ const CaruselHome = () => {
       console.log("loading")
      }
   
-      if(isError){
-     throw new Error(`couldn't get events for carousel: ${error}`); 
-     }
+     if (isError) {
+  console.error("❌ Failed to fetch carousel events:", error);
+  return <div className="text-red-500">Couldn't load events. Please try again later.</div>;
+}
+
     
   return (
     <Carousel className="w-full  max-w-[1443px] px-[10px]">

@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "Backend for Volunteer Opportunities Lister",
   "main": "dist/server.js",
+  
   "scripts": {
-    "build": "tsc && xcopy src\\data dist\\data /E /I /Y",
+    "build": "tsc && node -e \"require('fs').cpSync('src/data', 'dist/data', {recursive: true})\"",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "jest",
-    "postinstall": "npm run build"
-  },
+    "dev": "ts-node-dev --respawn --transpire-only src/server.ts",
+    "test": "jest"
+  }
+,
   "keywords": [
     "volunteer",
     "community",

@@ -37,9 +37,11 @@ const Profile = () => {
     console.log("loading")
    }
 
-    if(isError){
-   throw new Error(`couldn't get events for carousel: ${error}`); 
-   }
+  if (isError) {
+  console.error("❌ Failed to fetch carousel events:", error);
+  return <div className="text-red-500">Couldn't load events. Please try again later.</div>;
+}
+
 
     return (
         <div className="flex flex-col gap-[60px] 2xl:gap-[80px] w-full items-center my-[120px] px-5">

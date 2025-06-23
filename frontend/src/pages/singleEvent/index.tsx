@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // import type { VolunteerOpportunity } from "@/dummyData";
 import EnhancedLoader from "@/components/ui/custom-loader";
 import { useGetSingleEvent } from "@/reactQuery/query/events";
-import { eventData } from "@/dummyData";
+
 
 
 dayjs.extend(relativeTime);
@@ -69,10 +69,10 @@ const {data: event, isPending, error, isError } = useGetSingleEvent(id ?? '');
     }
 
     if(isError){
-      throw new Error(`couldn't get event ${error}`);
+      console.log(`couldn't get event ${error}`);
     }
 
-     if(!eventData){
+     if(!event){
      return <div>No Such Event Exists</div>
      }
 
