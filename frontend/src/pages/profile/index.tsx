@@ -1,33 +1,45 @@
-import { fetchItemsForCarusels } from "@/API/requests";
+// import { fetchItemsForCarusels } from "@/API/requests";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import CardForEventList from "@/components/ui/custom-elements/cards/cardVariant3";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { VolunteerOpportunity } from "@/dummyData";
-import { useEffect, useState } from "react";
+// import type { VolunteerOpportunity } from "@/dummyData";
+import { useGetEventsForCarousels } from "@/reactQuery/query/events";
+// import { useEffect, useState } from "react";
 
 const Profile = () => {
 
-     const [eventData, seteventData] = useState<VolunteerOpportunity[]>([]);
+    //  const [eventData, seteventData] = useState<VolunteerOpportunity[]>([]);
       
-            useEffect(() => {
-              const loadData = async () =>{
-                 try {
-            const data = await fetchItemsForCarusels();
-            console.log("Fetched data:", data);
+    //         useEffect(() => {
+    //           const loadData = async () =>{
+    //              try {
+    //         const data = await fetchItemsForCarusels();
+    //         console.log("Fetched data:", data);
     
-            if (Array.isArray(data)) {
-              seteventData(data);
-            } else {
-              seteventData([]);
-            }
-          } catch (error) {
-            console.error("Error loading event data:", error);
-            seteventData([]);
-          }
-              }
+    //         if (Array.isArray(data)) {
+    //           seteventData(data);
+    //         } else {
+    //           seteventData([]);
+    //         }
+    //       } catch (error) {
+    //         console.error("Error loading event data:", error);
+    //         seteventData([]);
+    //       }
+    //           }
               
-              loadData()
-          },[])
+    //           loadData()
+    //       },[])
+
+   const {data: events = [], isPending, error, isError } = useGetEventsForCarousels()
+
+
+   if(isPending){
+    console.log("loading")
+   }
+
+    if(isError){
+   throw new Error(`couldn't get events for carousel: ${error}`); 
+   }
 
     return (
         <div className="flex flex-col gap-[60px] 2xl:gap-[80px] w-full items-center my-[120px] px-5">
@@ -64,21 +76,21 @@ const Profile = () => {
 
   <TabsContent className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-1  items-center gap-y-[20px] gap-x-1 sm:gap-[20px] 2xl:gap-[40px]" value="saved">
  
-    {eventData.map((data) => {
+    {events.map((data) => {
     return (<CardForEventList key={data.id} data={data} />)
   })}
 
     </TabsContent>
   <TabsContent className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-1  items-center gap-y-[20px] gap-x-1 sm:gap-[20px] 2xl:gap-[40px]" value="going">
    
-    {eventData.map((data) => {
+    {events.map((data) => {
     return (<CardForEventList key={data.id} data={data} />)
   })}
 
     </TabsContent>
    <TabsContent className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-1  items-center gap-y-[20px] gap-x-1 sm:gap-[20px] 2xl:gap-[40px]" value="published">
     
-     {eventData.map((data) => {
+     {events.map((data) => {
     return (<CardForEventList key={data.id} data={data} />)
   })}
 

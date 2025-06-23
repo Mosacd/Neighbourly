@@ -1,7 +1,15 @@
 import { httpClient } from "..";
 
-export const fetchItems = async (searchParams: URLSearchParams) => {
-  const urlParams = getUrlParams(searchParams);
+type DebouncedParams = {
+    locations: string[];
+    timeCommitments: string[];
+    ageRequirements: string[];
+    Dates: string[];
+    search: string | null;
+    sort: string;
+}
+
+export const getItems = async (urlParams: DebouncedParams) => {
 
   const response = await httpClient.get("/api/Data", {
     params: urlParams,
@@ -10,7 +18,7 @@ export const fetchItems = async (searchParams: URLSearchParams) => {
   return response.data;
 };
 
-const getUrlParams = (searchParams: URLSearchParams) => {
+export const getUrlParams = (searchParams: URLSearchParams) => {
   return {
     locations: searchParams.getAll("location") ?? [],
     timeCommitments: searchParams.getAll("timeCommitment") ?? [],
@@ -23,7 +31,7 @@ const getUrlParams = (searchParams: URLSearchParams) => {
 
 
 
-export const fetchItemsForCarusels = async () => {
+export const getItemsForCarusels = async () => {
   const urlParams = {  sort: "Newest" }
 
   const response = await httpClient.get("/api/Data", {
@@ -34,7 +42,7 @@ export const fetchItemsForCarusels = async () => {
 };
 
 
-export const fetchSingleItem = async (id:string | undefined) => {
+export const getSingleItem = async (id:string | undefined) => {
     if(id == undefined){
         throw new Error("id is undefined")
     }

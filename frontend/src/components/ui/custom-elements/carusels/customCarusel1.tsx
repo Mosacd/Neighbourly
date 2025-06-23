@@ -7,38 +7,50 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import CardForHome from "../cards/cardVariant1";
-import { useEffect, useState } from "react";
-import { fetchItemsForCarusels } from "@/API/requests";
-import type { VolunteerOpportunity } from "@/dummyData";
+import { useGetEventsForCarousels } from "@/reactQuery/query/events";
+// import { useEffect, useState } from "react";
+// import type { VolunteerOpportunity } from "@/dummyData";
 
 const CaruselHome = () => {
-  const [eventData, seteventData] = useState<VolunteerOpportunity[]>([]);
+  // const [eventData, seteventData] = useState<VolunteerOpportunity[]>([]);
 
-      useEffect(() => {
-        const loadData = async () =>{
-            try {
-        const data = await fetchItemsForCarusels();
-        console.log("Fetched data:", data);
+  //     useEffect(() => {
+  //       const loadData = async () =>{
+  //           try {
+  //       const data = await fetchItemsForCarusels();
+  //       console.log("Fetched data:", data);
 
-        if (Array.isArray(data)) {
-          seteventData(data);
-        } else {
-          console.warn("Expected an array, got:", data);
-          seteventData([]);
-        }
-      } catch (error) {
-        console.error("Failed to fetch carousel data:", error);
-        seteventData([]);
-      }
-        }
+  //       if (Array.isArray(data)) {
+  //         seteventData(data);
+  //       } else {
+  //         console.warn("Expected an array, got:", data);
+  //         seteventData([]);
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed to fetch carousel data:", error);
+  //       seteventData([]);
+  //     }
+  //       }
         
-        loadData()
-    },[])
+  //       loadData()
+  //   },[])
+
+
+     const {data: events = [], isPending, error, isError } = useGetEventsForCarousels()
+  
+  
+     if(isPending){
+      console.log("loading")
+     }
+  
+      if(isError){
+     throw new Error(`couldn't get events for carousel: ${error}`); 
+     }
     
   return (
     <Carousel className="w-full  max-w-[1443px] px-[10px]">
       <CarouselContent>
-        {eventData && eventData.map((data) => (
+        {events && events.map((data) => (
           <CarouselItem key={data.id}>
             <CardForHome data={data} />
           </CarouselItem>
