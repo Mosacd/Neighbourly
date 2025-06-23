@@ -1,142 +1,192 @@
-import express, { Request, Response } from 'express';
-import path from 'path';
-import fs from 'fs';
+import request from 'supertest';
+import app from './server';
 import { VolunteerOpportunity } from './types/VolunteerOpportunity';
-import cors from 'cors';
+import fs from 'fs';
+import path from 'path';
 
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-app.use(cors());
-
-app.use(express.static(path.join(__dirname, '../public')));
 
 const dataPath = path.join(__dirname, 'data', 'Data.json');
+let originalData: string;
 
-const getQueryAsArray = (value: any): string[] => {
-  if (!value) return [];
-  if (Array.isArray(value)) return value as string[];
-  return [value as string];
-};
-
-app.get('/api/Data/:id', (req: Request, res: Response) => {
-  try {
-    const rawData = fs.readFileSync(dataPath, 'utf-8');
-    const opportunities = JSON.parse(rawData);
-
-    const { id } = req.params;
-    const opportunity = opportunities.find((opp: any) => opp.id === id);
-
-    if (opportunity) {
-      res.status(200).json(opportunity);
-    } else {
-      res.status(404).json({ error: 'Opportunity not found' });
-    }
-  } catch (error) {
-    console.error('Server error:', error);
-    res.status(500).json({
-      error: 'Failed to load data',
-      details: error instanceof Error ? error.message : 'Unknown error',
-    });
-  }
+beforeAll(() => {
+    originalData = fs.readFileSync(dataPath, 'utf-8');
 });
 
-app.get('/api/Data', (req: Request, res: Response) => {
-  try {
-    const rawData = fs.readFileSync(dataPath, 'utf-8');
-    const rawOpportunities = JSON.parse(rawData);
-    console.log(`Loaded ${rawOpportunities.length} opportunities from Data.json`);
-
-    let opportunities: VolunteerOpportunity[] = rawOpportunities.map((opp: any) => ({
-      ...opp,
-      startdate: new Date(opp.startdate),
-      enddate: new Date(opp.enddate),
-    }));
-
-    const { search } = req.query;
-    if (typeof search === 'string' && search.trim() !== '') {
-      const searchTerm = search.toLowerCase();
-      opportunities = opportunities.filter(opp =>
-        opp.title.toLowerCase().includes(searchTerm)
-      );
-    }
-
-    const locations = getQueryAsArray(req.query.locations);
-    const timeCommitments = getQueryAsArray(req.query.timeCommitments);
-    const ageRequirements = getQueryAsArray(req.query.ageRequirements);
-    const dateFilter = req.query.date as string;
-
-    if (locations.length > 0) {
-      opportunities = opportunities.filter(opp => locations.includes(opp.location));
-    }
-    if (timeCommitments.length > 0) {
-      opportunities = opportunities.filter(opp =>
-        timeCommitments.includes(opp.timeCommitment)
-      );
-    }
-    if (ageRequirements.length > 0) {
-      opportunities = opportunities.filter(opp =>
-        ageRequirements.includes(opp.ageRequirement)
-      );
-    }
-
-    if (dateFilter) {
-      const now = new Date();
-      if (dateFilter === 'This week') {
-        const firstDayOfWeek = new Date(now);
-        firstDayOfWeek.setDate(now.getDate() - now.getDay());
-        const lastDayOfWeek = new Date(firstDayOfWeek);
-        lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
-        opportunities = opportunities.filter(
-          opp => opp.startdate >= firstDayOfWeek && opp.startdate <= lastDayOfWeek
-        );
-      } else if (dateFilter === 'This Month') {
-        const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-        const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-        opportunities = opportunities.filter(
-          opp => opp.startdate >= startOfMonth && opp.startdate <= endOfMonth
-        );
-      }
-    }
-
-    console.log(`Processing ${opportunities.length} opportunities after filters.`);
-
-    let sortValue = (req.query.sort as string) || 'Newest';
-    
-    sortValue = sortValue.replace('>', '').trim();
-
-    console.log(`Sorting by: ${sortValue}`); 
-
-    opportunities.sort((a, b) => {
-      switch (sortValue) {
-        case 'Oldest':
-          return a.startdate.getTime() - b.startdate.getTime();
-        case 'Alphabetically, A-Z':
-          return a.title.localeCompare(b.title);
-        case 'Alphabetically, Z-A':
-          return b.title.localeCompare(a.title);
-        case 'Newest':
-        default:
-          return b.startdate.getTime() - a.startdate.getTime();
-      }
-    });
-
-    console.log(`Returning ${opportunities.length} sorted opportunities to the client.`);
-    res.status(200).json(opportunities);
-    
-  } catch (error) {
-    console.error('Server error:', error);
-    res.status(500).json({
-      error: 'Failed to load data',
-      details: error instanceof Error ? error.message : 'Unknown error',
-    });
-  }
+afterEach(() => {
+    fs.writeFileSync(dataPath, originalData);
 });
 
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-}
+describe('Neighbourly API Endpoints', () => {
 
-export default app;
+    describe('GET /api/Data/:id', () => {
+        it('should return a single opportunity for a valid ID', async () => {
+            const response = await request(app).get('/api/Data/1');
+            expect(response.status).toBe(200);
+            expect(response.body).toBeInstanceOf(Object);
+            expect(response.body.id).toBe('1');
+            expect(response.body.title).toBe('Library Reading Buddy Program');
+            expect(typeof response.body.image).toBe('string');
+            expect(typeof response.body.startdate).toBe('string');
+        });
+
+        it('should return 404 Not Found for an ID that does not exist', async () => {
+            const response = await request(app).get('/api/Data/999');
+            expect(response.status).toBe(404);
+            expect(response.body.error).toBe('Opportunity not found');
+        });
+    });
+
+    describe('GET /api/Data', () => {
+        describe('Default Behavior', () => {
+            it('should return all 8 items sorted by "Newest" by default', async () => {
+                const response = await request(app).get('/api/Data');
+                expect(response.status).toBe(200);
+                expect(response.body.length).toBe(8);
+                const ids = response.body.map((opp: VolunteerOpportunity) => opp.id);
+                expect(ids).toEqual(['8', '7', '3', '6', '2', '4', '1', '5']);
+            });
+        });
+
+        describe('Sorting Functionality', () => {
+            it('should sort by date ascending when sort=Oldest', async () => {
+                const response = await request(app).get('/api/Data?sort=Oldest');
+                expect(response.status).toBe(200);
+                const ids = response.body.map((opp: VolunteerOpportunity) => opp.id);
+                expect(ids).toEqual(['5', '1', '4', '2', '6', '3', '7', '8']);
+            });
+
+            it('should sort by title A-Z when sort="Alphabetically, A-Z"', async () => {
+                const response = await request(app).get('/api/Data?sort=Alphabetically, A-Z');
+                expect(response.status).toBe(200);
+                const titles = response.body.map((opp: VolunteerOpportunity) => opp.title);
+                expect(titles).toEqual([
+                    'Animal Shelter Weekend Helper',
+                    'Annual Arts Festival Support',
+                    'Community Food Drive',
+                    'Community Garden Tending',
+                    'Library Reading Buddy Program',
+                    'Park Cleanup Crew',
+                    'Senior Companion Visitor',
+                    'Youth Soccer Coach Assistant'
+                ]);
+            });
+
+            it('should sort by title Z-A when sort="Alphabetically, Z-A"', async () => {
+                const response = await request(app).get('/api/Data?sort=Alphabetically, Z-A');
+                expect(response.status).toBe(200);
+                const titles = response.body.map((opp: VolunteerOpportunity) => opp.title);
+                expect(titles).toEqual([
+                    'Youth Soccer Coach Assistant',
+                    'Senior Companion Visitor',
+                    'Park Cleanup Crew',
+                    'Library Reading Buddy Program',
+                    'Community Garden Tending',
+                    'Community Food Drive',
+                    'Annual Arts Festival Support',
+                    'Animal Shelter Weekend Helper'
+                ]);
+            });
+        });
+
+        describe('Filtering and Search Functionality', () => {
+            it('should search by title, case-insensitively', async () => {
+                const response = await request(app).get('/api/Data?search=park');
+                expect(response.status).toBe(200);
+                expect(response.body.length).toBe(1);
+                expect(response.body[0].title).toBe('Park Cleanup Crew');
+                expect(response.body[0].id).toBe('2');
+            });
+
+            it('should filter by a single location', async () => {
+                const response = await request(app).get('/api/Data?locations=Downtown');
+                expect(response.status).toBe(200);
+                expect(response.body.length).toBe(2);
+                const ids = response.body.map((opp: VolunteerOpportunity) => opp.id);
+                expect(ids).toContain('1');
+                expect(ids).toContain('8');
+            });
+
+            it('should filter by age requirement', async () => {
+                const response = await request(app).get('/api/Data?ageRequirements=18%2B');
+                expect(response.status).toBe(200);
+                expect(response.body.length).toBe(3);
+                const ids = response.body.map((opp: VolunteerOpportunity) => opp.id);
+                expect(ids).toContain('3');
+                expect(ids).toContain('4');
+                expect(ids).toContain('5');
+            });
+
+            it('should handle multiple filters at once', async () => {
+                const response = await request(app).get('/api/Data?locations=Eastside&ageRequirements=18%2B');
+                expect(response.status).toBe(200);
+                expect(response.body.length).toBe(1);
+                expect(response.body[0].id).toBe('3');
+            });
+        });
+
+        describe('Combined Functionality', () => {
+            it('should filter by location and then sort the results correctly', async () => {
+                const response = await request(app).get('/api/Data?locations=Downtown&locations=Westside&sort=Alphabetically, A-Z');
+                expect(response.status).toBe(200);
+                expect(response.body.length).toBe(4);
+                const titles = response.body.map((opp: VolunteerOpportunity) => opp.title);
+                expect(titles).toEqual([
+                    'Annual Arts Festival Support',
+                    'Library Reading Buddy Program',
+                    'Park Cleanup Crew',
+                    'Youth Soccer Coach Assistant'
+                ]);
+            });
+        });
+    });
+
+    describe('POST /api/Data', () => {
+        it('should add a new opportunity and return it with a new ID', async () => {
+            const newOppData = {
+                title: "Test Event: Community Tree Planting",
+                location: "Central Park",
+                shortDescription: "Help plant new trees in the park.",
+                detailedDescription: "A detailed description of the tree planting event.",
+                schedule: "Saturday, 10 AM - 1 PM",
+                start: "2026-04-22T10:00:00.000Z",
+                end: "2026-04-22T13:00:00.000Z",
+            };
+
+            const response = await request(app)
+                .post('/api/Data')
+                .send(newOppData);
+
+            expect(response.status).toBe(201);
+            
+            expect(response.body).toBeInstanceOf(Object);
+
+            expect(response.body.id).toBeDefined();
+            expect(typeof response.body.id).toBe('string');
+
+            expect(response.body.title).toBe(newOppData.title);
+            expect(response.body.Briefdescription).toBe(newOppData.shortDescription);
+            expect(response.body.description).toBe(newOppData.detailedDescription);
+
+            const updatedRawData = fs.readFileSync(dataPath, 'utf-8');
+            const updatedOpportunities = JSON.parse(updatedRawData);
+            
+            expect(updatedOpportunities.length).toBe(9);
+            const addedEvent = updatedOpportunities.find((opp: any) => opp.id === response.body.id);
+            expect(addedEvent).toBeDefined();
+            expect(addedEvent.title).toBe(newOppData.title);
+        });
+
+        it('should return 400 Bad Request if required fields are missing', async () => {
+            const incompleteData = {
+                title: "Incomplete Test Event",
+            };
+
+            const response = await request(app)
+                .post('/api/Data')
+                .send(incompleteData);
+            
+            expect(response.status).toBe(400);
+            expect(response.body.error).toBe('Missing required fields');
+        });
+    });
+});
