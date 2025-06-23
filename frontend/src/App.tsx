@@ -8,6 +8,7 @@ import AuthLayout from './layouts/AuthLayout'
 import SignInForm from './pages/SignIn'
 import SignUpForm from './pages/SignUp'
 import CreateEvent from './pages/create'
+import Profile from './pages/profile'
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
         <Route path="Events" element={<Events />} />
         <Route path="Events/:id" element={<SingleEvent />} />
         <Route path="CreateEvent" element={<CreateEvent />} />
+        <Route path="Profile" element={<Profile />} />
       </Route>
       <Route path="Auth" element={<AuthLayout />}>
         <Route index element={<Navigate to="/Auth/SignIn" replace />} />
