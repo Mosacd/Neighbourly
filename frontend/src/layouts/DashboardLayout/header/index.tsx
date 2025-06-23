@@ -30,6 +30,10 @@ const Header = () => {
         </Link>
         <Menu />
         <div className="hidden lg:flex items-center gap-[36px] 2xl:gap-[40px]">
+                    <Link className="text-lg 2xl:text-xl hover:cursor-pointer noto-sans-semibold"
+ to={'/Dashboard/createEvent'}>
+            Create+
+          </Link>
           <Link className="text-lg 2xl:text-xl hover:cursor-pointer noto-sans-semibold"
  to={'/Dashboard/Events'}>
             Event Catalog
