@@ -1,33 +1,14 @@
 {
   "compilerOptions": {
     "target": "es2018",
-    "lib": ["es2018"],
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./src",
-    "strict": true,
+    "strict": false,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "allowJs": true,
-    "declaration": true,
-    "sourceMap": true,
-    "removeComments": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
-    "types": [
-      "node"
-    ]
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*.ts"
@@ -36,7 +17,6 @@
     "node_modules",
     "**/*.test.ts",
     "**/*.spec.ts",
-    "dist",
-    "**/*.d.ts"
+    "dist"
   ]
 }
