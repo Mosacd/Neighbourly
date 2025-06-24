@@ -1,4 +1,3 @@
-
 import express, { Request, Response } from 'express';
 import path from 'path';
 import fs from 'fs';
@@ -9,9 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-
 app.use(cors());
-
 app.use(express.static(path.join(__dirname, '../public')));
 
 const dataPath = path.join(__dirname, 'data', 'Data.json');
@@ -25,19 +22,19 @@ const getQueryAsArray = (value: any): string[] => {
 app.get('/api/Data/:id', (req: Request, res: Response) => {
     try {
         const rawData = fs.readFileSync(dataPath, 'utf-8');
-        const opportunities = JSON.parse(rawData);
+        const opportunities: VolunteerOpportunity[] = JSON.parse(rawData);
 
         const { id } = req.params;
-        const opportunity = opportunities.find((opp: any) => opp.id === id);
+        const opportunity = opportunities.find((opp) => opp.id === id);
 
         if (opportunity) {
-            res.status(200).json(opportunity);
+            return res.status(200).json(opportunity);
         } else {
-            res.status(404).json({ error: 'Opportunity not found' });
+            return res.status(404).json({ error: 'Opportunity not found' });
         }
     } catch (error) {
         console.error('Server error:', error);
-        res.status(500).json({
+        return res.status(500).json({
             error: 'Failed to load data',
             details: error instanceof Error ? error.message : 'Unknown error',
         });
@@ -47,8 +44,7 @@ app.get('/api/Data/:id', (req: Request, res: Response) => {
 app.post('/api/Data', (req: Request, res: Response) => {
     try {
         const rawData = fs.readFileSync(dataPath, 'utf-8');
-        const opportunities = JSON.parse(rawData);
-
+        const opportunities: VolunteerOpportunity[] = JSON.parse(rawData);
         
         const {
             title,
@@ -84,16 +80,12 @@ app.post('/api/Data', (req: Request, res: Response) => {
         };
 
         opportunities.push(newOpportunity);
-
-      
         fs.writeFileSync(dataPath, JSON.stringify(opportunities, null, 2));
-
        
-        res.status(201).json(newOpportunity);
-
+        return res.status(201).json(newOpportunity);
     } catch (error) {
         console.error('Server error on POST /api/Data:', error);
-        res.status(500).json({
+        return res.status(500).json({
             error: 'Failed to save new opportunity',
             details: error instanceof Error ? error.message : 'Unknown error',
         });
@@ -103,10 +95,7 @@ app.post('/api/Data', (req: Request, res: Response) => {
 app.get('/api/Data', (req: Request, res: Response) => {
     try {
         const rawData = fs.readFileSync(dataPath, 'utf-8');
-        const rawOpportunities = JSON.parse(rawData);
-        console.log(`Loaded ${rawOpportunities.length} opportunities from Data.json`);
-
-        let opportunities: VolunteerOpportunity[] = rawOpportunities.map((opp: any) => ({
+        let opportunities: VolunteerOpportunity[] = JSON.parse(rawData).map((opp: any) => ({
             ...opp,
             startdate: new Date(opp.startdate),
             enddate: new Date(opp.enddate),
@@ -129,62 +118,49 @@ app.get('/api/Data', (req: Request, res: Response) => {
             opportunities = opportunities.filter(opp => locations.includes(opp.location));
         }
         if (timeCommitments.length > 0) {
-            opportunities = opportunities.filter(opp =>
-                timeCommitments.includes(opp.timeCommitment)
-            );
+            opportunities = opportunities.filter(opp => timeCommitments.includes(opp.timeCommitment));
         }
         if (ageRequirements.length > 0) {
-            opportunities = opportunities.filter(opp =>
-                ageRequirements.includes(opp.ageRequirement)
-            );
+            opportunities = opportunities.filter(opp => ageRequirements.includes(opp.ageRequirement));
         }
-
         if (dateFilter) {
             const now = new Date();
             if (dateFilter === 'This week') {
-                const firstDayOfWeek = new Date(now);
-                firstDayOfWeek.setDate(now.getDate() - now.getDay());
-                const lastDayOfWeek = new Date(firstDayOfWeek);
-                lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
+                const firstDayOfWeek = new Date(now.setDate(now.getDate() - now.getDay()));
+                const lastDayOfWeek = new Date(firstDayOfWeek.setDate(firstDayOfWeek.getDate() + 6));
                 opportunities = opportunities.filter(
-                    opp => opp.startdate >= firstDayOfWeek && opp.startdate <= lastDayOfWeek
+                    opp => new Date(opp.startdate) >= firstDayOfWeek && new Date(opp.startdate) <= lastDayOfWeek
                 );
             } else if (dateFilter === 'This Month') {
                 const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
                 const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
                 opportunities = opportunities.filter(
-                    opp => opp.startdate >= startOfMonth && opp.startdate <= endOfMonth
+                    opp => new Date(opp.startdate) >= startOfMonth && new Date(opp.startdate) <= endOfMonth
                 );
             }
         }
 
-        console.log(`Processing ${opportunities.length} opportunities after filters.`);
-
         let sortValue = (req.query.sort as string) || 'Newest';
-
         sortValue = sortValue.replace('>', '').trim();
-
-        console.log(`Sorting by: ${sortValue}`);
 
         opportunities.sort((a, b) => {
             switch (sortValue) {
                 case 'Oldest':
-                    return a.startdate.getTime() - b.startdate.getTime();
+                    return new Date(a.startdate).getTime() - new Date(b.startdate).getTime();
                 case 'Alphabetically, A-Z':
                     return a.title.localeCompare(b.title);
                 case 'Alphabetically, Z-A':
                     return b.title.localeCompare(a.title);
                 case 'Newest':
                 default:
-                    return b.startdate.getTime() - a.startdate.getTime();
+                    return new Date(b.startdate).getTime() - new Date(a.startdate).getTime();
             }
         });
 
-        console.log(`Returning ${opportunities.length} sorted opportunities to the client.`);
-        res.status(200).json(opportunities);
+        return res.status(200).json(opportunities);
     } catch (error) {
         console.error('Server error:', error);
-        res.status(500).json({
+        return res.status(500).json({
             error: 'Failed to load data',
             details: error instanceof Error ? error.message : 'Unknown error',
         });
