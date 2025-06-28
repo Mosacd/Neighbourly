@@ -51,3 +51,4 @@ junit.xml
 # .ts-node-dev-tmp-*
 
 # If you're using other tools that generate files, add them here
+/src/generated/prisma
