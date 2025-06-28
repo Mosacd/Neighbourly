@@ -4,6 +4,10 @@
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./src",
+
+    "lib": ["ES2020"],
+    "types": ["node", "jest"],  
+
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -11,11 +15,9 @@
     "resolveJsonModule": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*" 
   ],
   "exclude": [
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.spec.ts"
+    "node_modules"
   ]
 }
