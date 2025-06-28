@@ -5,8 +5,9 @@
     "outDir": "./dist",
     "rootDir": "./src",
 
-    "lib": ["ES2020"], 
-    "types": ["node"],  
+    "lib": ["ES2020"],
+ 
+    "types": ["node", "jest"],  
 
     "strict": true,
     "esModuleInterop": true,
@@ -15,11 +16,9 @@
     "resolveJsonModule": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*" 
   ],
   "exclude": [
-    "node_modules",
-    "**/*.test.ts",
-    "**/*.spec.ts"
+    "node_modules"
   ]
 }

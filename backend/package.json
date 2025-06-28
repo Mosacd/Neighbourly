@@ -4,10 +4,10 @@
   "description": "Backend for Volunteer Opportunities Lister",
   "main": "dist/server.js",
   "scripts": {
-    "build": "tsc && node -e \"require('fs').cpSync('src/data', 'dist/data', {recursive: true})\"",
+    "build": "tsc", 
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "jest"
+    "test": "jest --runInBand --detectOpenHandles"
   },
   "keywords": [
     "volunteer",
@@ -20,7 +20,8 @@
     "@types/node": "^20.14.9",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.2",
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
